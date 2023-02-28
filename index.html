@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[TITRE DU LIVRE]</title>
+</head>
+<body>
+    <div id="charactere-container">
+        <div id="charactere-image">
+            <img src="" alt="">
+        </div>
+        <input type="text" placeholder="[RANDOM NAME]" id="charactere-name">
+        <input type="radio" name="gender-choice" id="male" value="male"> Homme
+        <input type="radio" name="gender-choice" id="female" value="female"> Femme
+        <button id="charactere" onclick="confirmCharactere()">Valider</button>
+    </div>
+    <div class="script-container">
+        <p class="script">
+            Lorem ipsum dolor sit <span id="name"></span> consectetur adipisicing elit. Debitis id quas perspiciatis quis assumenda nesciunt recusandae laudantium tempore dolorum possimus commodi, sapiente, magni repudiandae quisquam praesentium. Aliquam minima quod expedita!
+        </p>
+        <div id="answer">
+            <input type="radio" name="answer-choice" value="answer-1" id="answer-1"> Réponse 1
+            <input type="radio" name="answer-choice" value="answer-2" id="answer-2"> Réponse 2
+        </div>
+        <button id="choice-button" onclick="getChoice()">Valider</button>
+    </div>
+    <div id="story">
+
+    </div>
+
+    <script src="script.js"></script>
+    
+</body>
+</html>
