@@ -1,26 +1,28 @@
-#charactere-container {
+#character-container {
     width: 60vw;
     margin: auto;
 }
 
-#charactere-image {
-    width: 10vw;
-    height: 30vh;
-
+#character-profile img {
+    float: left;
+    width: 200px;
+    height: 300px;
+    object-fit: cover;
 }
 
-.script-container {
+.scene-container {
+    clear: left;
     width: 60vw;
     margin: auto;
     display: flex;
     flex-direction: column;
 }
 
-.script-container div {
+.scene-container div {
     margin: auto;
     width: auto;
 }
 
-.script-container button {
+.scene-container button {
     margin: auto;
 }
