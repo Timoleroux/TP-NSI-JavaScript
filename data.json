@@ -1,4 +1,4 @@
-[
-    { "name": "Ashwin", "age": "20" },
-    { "name": "Abhinandan", "age": "20" }
-]
+{
+    "introduction": ["le texte en question", "le nom du prochain texte"],
+    "text-2": ["le texte en question", "le nom du prochain texte"]
+}

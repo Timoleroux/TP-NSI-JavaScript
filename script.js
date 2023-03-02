@@ -1,3 +1,20 @@
+function getJsonContent() {
+    return fetch("./data.json")
+        .then((response) => response.json())
+        .then((json) => {
+            return json;
+        });
+}
+
+getJsonContent()
+    .then((json) => {
+        return json;
+    })
+    .catch((error) => {
+        alert(`Erreur dans le chargement du fichier json :\n${error}`)
+        return error;
+    });
+
 function confirmcharacter() {
     var name = document.getElementById("character-choice").value;
     var gender = document.querySelector('input[name="gender-choice"]:checked').value;
@@ -14,19 +31,20 @@ function confirmcharacter() {
     return [name, gender];
 }
 
-script_id = 0;
+// C'est ici qu'on viendra récupérer le début du texte dans les cookies
+var script_name = "introduction";
 function getChoice() {
-    var choice = document.querySelector(`input[name="answer-choice-${script_id}"]:checked`).value;
+    var choice = document.querySelector(`input[name="answer-choice-${script_name}"]:checked`).value;
     if (choice) {
         //  Permet que les radios button ne se décochent pas après qu'on ait validé la réponse
-        document.querySelector(`input[name="answer-choice-${script_id}"]:checked`).setAttribute("checked", "checked");
-        document.getElementById(`confirm-choice-button-${script_id}`).style.display = "none";
-        script_id = script_id + 1;
-        displayScript(script_id, choice);
+        document.querySelector(`input[name="answer-choice-${script_name}"]:checked`).setAttribute("checked", "checked");
+        document.getElementById(`confirm-choice-button-${script_name}`).style.display = "none";
+        script_name = "texte suivant";
+        displayScript(script_name, choice);
     }
 }
 
-function displayScript(script_id, choice) {
+function displayScript(script_name, choice) {
     current_html = document.getElementById("story").innerHTML;
     new_html =
         current_html +
@@ -36,28 +54,11 @@ function displayScript(script_id, choice) {
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis id quas perspiciatis quis assumenda nesciunt recusandae laudantium tempore dolorum possimus commodi, sapiente, magni repudiandae quisquam praesentium. Aliquam minima quod expedita!
         </p>
         <div>
-            <input type="radio" name="answer-choice-${script_id}" value="answer-1"> Réponse 1
-            <input type="radio" name="answer-choice-${script_id}" value="answer-2"> Réponse 2
+            <input type="radio" name="answer-choice-${script_name}" value="answer-1"> Réponse 1
+            <input type="radio" name="answer-choice-${script_name}" value="answer-2"> Réponse 2
         </div>
-        <button id="confirm-choice-button-${script_id}" onclick="getChoice()">Valider</button>
+        <button id="confirm-choice-button-${script_name}" onclick="getChoice()">Valider</button>
     </div>
     `;
     document.getElementById("story").innerHTML = new_html;
 }
-
-function getJsonContent() {
-    return fetch("./data.json")
-        .then((response) => response.json())
-        .then((json) => {
-            return json;
-        });
-}
-
-getJsonContent()
-    .then((json) => {
-        return json; // afficher le contenu JSON dans la console
-    })
-    .catch((error) => {
-        alert('Erreur dans le chargement du fichier json')
-        return error; // afficher une erreur dans la console
-    });
