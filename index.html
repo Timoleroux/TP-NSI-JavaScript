@@ -13,23 +13,11 @@
                 <img src="image1.png" alt="" />
             </div>
             <input type="text" placeholder="Prénom" id="character-choice" />
-            <input type="radio" name="gender-choice" value="male" /> Homme
-            <input type="radio" name="gender-choice" value="female" /> Femme
-            <button onclick="confirmcharacter()">Valider</button>
+            <input type="radio" name="gender-choice" value="male" id="male"/>Homme
+            <input type="radio" name="gender-choice" value="female" id="female"/>Femme
+            <button onclick="start()" id="start-btn">Start</button>
         </div>
         <div id="story">
-            <div class="scene-container">
-                <p class="scene">
-                    Lorem ipsum dolor sit <span id="name"></span> consectetur adipisicing elit. Debitis id quas
-                    perspiciatis quis assumenda nesciunt recusandae laudantium tempore dolorum possimus commodi,
-                    sapiente, magni repudiandae quisquam praesentium. Aliquam minima quod expedita!
-                </p>
-                <div>
-                    <input type="radio" name="answer-choice-0" value="answer-1" /> Réponse 1
-                    <input type="radio" name="answer-choice-0" value="answer-2" /> Réponse 2
-                </div>
-                <button id="confirm-choice-button-0" onclick="getChoice()">Valider</button>
-            </div>
         </div>
         <script type="text/javascript" src="data.json"></script>
         <script type="text/javascript" src="script.js"></script>

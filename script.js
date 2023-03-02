@@ -1,64 +1,99 @@
-function getJsonContent() {
-    return fetch("./data.json")
+function getJson() {
+    return fetch("data.json")
         .then((response) => response.json())
-        .then((json) => {
-            return json;
-        });
+        .catch((error) => console.error("Error:", error));
 }
 
-getJsonContent()
-    .then((json) => {
-        return json;
-    })
-    .catch((error) => {
-        alert(`Erreur dans le chargement du fichier json :\n${error}`)
-        return error;
-    });
+function setCookie(name, value, days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "") + expires + "; path=/";
+}
 
-function confirmcharacter() {
+function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(";");
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == " ") c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+}
+
+function deleteCookie(name) {
+    document.cookie = name + "=; expires=Thu, 01 Jan 2000 00:00:00 GMT;";
+}
+
+function start() {
     var name = document.getElementById("character-choice").value;
     var gender = document.querySelector('input[name="gender-choice"]:checked').value;
+
     if (!name) {
         if (gender == "male") {
             var names = ["Jean-Dominique", "Florent", "Sébastien"];
-        } else {
+        } else if (gender == "female") {
             var names = ["Marie-Dominique", "Christelle", "Géraldine"];
+        } else {
+            alert("Choississez un genre.");
         }
         name = names[Math.floor(Math.random() * names.length)];
         document.getElementById("character-choice").value = name;
     }
-    document.getElementById("name").innerHTML = name;
-    return [name, gender];
+
+    setCookie("current_text", "intro", 1);
+    setCookie("name", name, 1);
+    setCookie("gender", gender, 1);
+
+    document.getElementById("start-btn").style.display = "none";
+    document.getElementById("character-choice").disabled = true;
+    document.getElementById("male").disabled = true;
+    document.getElementById("female").disabled = true;
+
+    loadText();
 }
 
-// C'est ici qu'on viendra récupérer le début du texte dans les cookies
-var script_name = "introduction";
-function getChoice() {
-    var choice = document.querySelector(`input[name="answer-choice-${script_name}"]:checked`).value;
-    if (choice) {
-        //  Permet que les radios button ne se décochent pas après qu'on ait validé la réponse
-        document.querySelector(`input[name="answer-choice-${script_name}"]:checked`).setAttribute("checked", "checked");
-        document.getElementById(`confirm-choice-button-${script_name}`).style.display = "none";
-        script_name = "texte suivant";
-        displayScript(script_name, choice);
-    }
-}
+function loadText() {
+    getJson().then((json_content) => {
+        current_html = document.getElementById("story").innerHTML;
+        var text_name = getCookie("current_text");
 
-function displayScript(script_name, choice) {
-    current_html = document.getElementById("story").innerHTML;
-    new_html =
-        current_html +
-        `
-    <div class="scene-container">
-        <p class="scene">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis id quas perspiciatis quis assumenda nesciunt recusandae laudantium tempore dolorum possimus commodi, sapiente, magni repudiandae quisquam praesentium. Aliquam minima quod expedita!
-        </p>
-        <div>
-            <input type="radio" name="answer-choice-${script_name}" value="answer-1"> Réponse 1
-            <input type="radio" name="answer-choice-${script_name}" value="answer-2"> Réponse 2
+        var answer_html = `
+            <div>
+                <input type="radio" name="answer-choice-${text_name}" id="choice-${text_name}-1" value="answer-1"> Réponse 1
+                <input type="radio" name="answer-choice-${text_name}" id="choice-${text_name}-2" value="answer-2"> Réponse 2
+            </div>
+        `;
+
+        new_html =
+            current_html +
+            `
+        <div class="scene-container">
+            <p class="scene">${json_content[text_name][0]}</p>
+            ${answer_html}
+            <button id="confirm-choice-button-${text_name}">Valider</button>
         </div>
-        <button id="confirm-choice-button-${script_name}" onclick="getChoice()">Valider</button>
-    </div>
-    `;
-    document.getElementById("story").innerHTML = new_html;
+        `;
+
+        document.getElementById("story").innerHTML = new_html;
+        document.getElementById("name").innerHTML = getCookie("name");
+
+        // Ca marche pas mais je sais pas pourqouoi ca fait 2h que cette grosse pute de condition veut pas marcher
+        if (document.getElementById(`choice-${text_name}-1`).checked) {
+            setCookie("current_text", json_content[text_name][1]);
+        } else if (document.getElementById(`choice-${text_name}-2`).checked) {
+            setCookie("current_text", json_content[text_name][2]);
+        } else {
+            alert("Error");
+        }
+
+        // Run 'loadText()' when 'confirm-choice-button-${text_name}' is clicked
+        document.getElementById(`confirm-choice-button-${text_name}`).addEventListener("click", () => {
+            loadText();
+        });
+    });
 }
