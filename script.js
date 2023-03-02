@@ -44,3 +44,20 @@ function displayScript(script_id, choice) {
     `;
     document.getElementById("story").innerHTML = new_html;
 }
+
+function getJsonContent() {
+    return fetch("./data.json")
+        .then((response) => response.json())
+        .then((json) => {
+            return json;
+        });
+}
+
+getJsonContent()
+    .then((json) => {
+        return json; // afficher le contenu JSON dans la console
+    })
+    .catch((error) => {
+        alert('Erreur dans le chargement du fichier json')
+        return error; // afficher une erreur dans la console
+    });
