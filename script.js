@@ -70,31 +70,42 @@ function loadText() {
             return false;
         } else {
             if (document.getElementById(`choice-${text_name}-1`).checked) {
-                setCookie("current_text", json_content[text_name][2], 1);
+                setCookie("current_text", json_content[text_name]["answer_1"][0], 1);
             } else if (document.getElementById(`choice-${text_name}-2`).checked) {
-                setCookie("current_text", json_content[text_name][3], 1);
+                setCookie("current_text", json_content[text_name]["answer_2"][0], 1);
             } else {
                 return false;
             }
             text_name = getCookie("current_text");
         }
 
-        var answer_html = `
-            <div>
-                <input type="radio" name="answer-choice-${text_name}" id="choice-${text_name}-1" value="answer-1"> Réponse 1
-                <input type="radio" name="answer-choice-${text_name}" id="choice-${text_name}-2" value="answer-2"> Réponse 2
-            </div>
-        `;
-
-        new_html =
-            current_html +
-            `
-        <div class="scene-container">
-            <p class="scene">${json_content[text_name][0]}</p>
-            ${answer_html}
-            <button id="confirm-choice-button-${text_name}">Valider</button>
-        </div>
-        `;
+        // Get the new html according to the type of data
+        if (json_content[text_name]["type"] == "question") {
+            new_html =
+                current_html + `
+                <div class="scene-container">
+                    <p class="scene">${json_content[text_name]["content"]}</p>
+                    <input type="radio" name="answer-choice-${text_name}" id="choice-${text_name}-1" value="answer-1"> ${json_content[text_name]["answer_1"][1]}
+                    <input type="radio" name="answer-choice-${text_name}" id="choice-${text_name}-2" value="answer-2"> ${json_content[text_name]["answer_2"][1]}
+                    <button id="confirm-choice-button-${text_name}">Valider</button>
+                </div>`;
+        } else if (json_content[text_name]["type"] == "random"){
+            alert("random")
+        } else if (json_content[text_name]["type"] == "direct"){
+            var redirect_text = json_content[text_name]["redirect"]
+            new_html =
+                current_html + `
+                <div class="scene-container">
+                    <p class="scene">${json_content[text_name]["content"]}</p>
+                    <p class="scene">${json_content[redirect_text]["content"]}</p>
+                    <input type="radio" name="answer-choice-${redirect_text}" id="choice-${redirect_text}-1" value="answer-1"> ${json_content[redirect_text]["answer_1"][1]}
+                    <input type="radio" name="answer-choice-${redirect_text}" id="choice-${redirect_text}-2" value="answer-2"> ${json_content[redirect_text]["answer_2"][1]}
+                    <button id="confirm-choice-button-${redirect_text}">Valider</button>
+                </div>`;
+            text_name = redirect_text
+        } else {
+            alert("unknown")
+        }
 
         document.getElementById("story").innerHTML = new_html;
         document.getElementById("name").innerHTML = getCookie("name");
