@@ -45,7 +45,7 @@ function start() {
         document.getElementById("character-choice").value = name;
     }
 
-    setCookie("current_text", "intro", 1);
+    setCookie("current_text", "start", 1);
     setCookie("name", name, 1);
     setCookie("gender", gender, 1);
 
@@ -61,6 +61,23 @@ function loadText() {
     getJson().then((json_content) => {
         current_html = document.getElementById("story").innerHTML;
         var text_name = getCookie("current_text");
+
+        if (text_name == "start") {
+            setCookie("current_text", "intro", 1);
+            text_name = "intro";
+        } else if (json_content[text_name] == undefined) {
+            alert(`Impossible d'acceder à json_content[${text_name}]`);
+            return false;
+        } else {
+            if (document.getElementById(`choice-${text_name}-1`).checked) {
+                setCookie("current_text", json_content[text_name][2], 1);
+            } else if (document.getElementById(`choice-${text_name}-2`).checked) {
+                setCookie("current_text", json_content[text_name][3], 1);
+            } else {
+                return false;
+            }
+            text_name = getCookie("current_text");
+        }
 
         var answer_html = `
             <div>
@@ -81,15 +98,6 @@ function loadText() {
 
         document.getElementById("story").innerHTML = new_html;
         document.getElementById("name").innerHTML = getCookie("name");
-
-        // Ca marche pas mais je sais pas pourqouoi ca fait 2h que cette grosse pute de condition veut pas marcher
-        if (document.getElementById(`choice-${text_name}-1`).checked) {
-            setCookie("current_text", json_content[text_name][1]);
-        } else if (document.getElementById(`choice-${text_name}-2`).checked) {
-            setCookie("current_text", json_content[text_name][2]);
-        } else {
-            alert("Error");
-        }
 
         // Run 'loadText()' when 'confirm-choice-button-${text_name}' is clicked
         document.getElementById(`confirm-choice-button-${text_name}`).addEventListener("click", () => {
