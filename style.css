@@ -1,27 +1,28 @@
-#character-container {
-    width: 60vw;
-    margin: auto;
+/* --- General --- */
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-#character-profile img {
-    float: left;
-    width: 200px;
-    height: 300px;
-    object-fit: cover;
+/* --- Start page --- */
+
+#main-title {
+    font-family: 'Carter One';font-size: 60px;
+    text-transform: uppercase;
 }
 
-.scene-container {
-    clear: left;
-    width: 60vw;
-    margin: auto;
-    /* display: flex;
-    flex-direction: column; */
+#start-menu {
+    display: flex;
+    flex-direction: column;
 }
 
-.scene-container input {
-    align-self: center;
+#start-menu button {
+    margin: 10%;
+    padding-right: 10%;
+    padding-left: 10%;
 }
 
-.scene-container p {
-    text-align: justify;
-}
+/* --- Character page --- */
+/* --- Story page --- */
