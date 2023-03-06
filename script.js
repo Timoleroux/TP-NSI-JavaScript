@@ -85,8 +85,12 @@ function loadText() {
                 current_html + `
                 <div class="scene-container">
                     <p class="scene">${json_content[text_name]["content"]}</p>
+                    <label>
                     <input type="radio" name="answer-choice-${text_name}" id="choice-${text_name}-1" value="answer-1"> ${json_content[text_name]["answer_1"][1]}
+                    </label>
+                    <label>
                     <input type="radio" name="answer-choice-${text_name}" id="choice-${text_name}-2" value="answer-2"> ${json_content[text_name]["answer_2"][1]}
+                    </label>
                     <button id="confirm-choice-button-${text_name}">Valider</button>
                 </div>`;
         } else if (json_content[text_name]["type"] == "random"){

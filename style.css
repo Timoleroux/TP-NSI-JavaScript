@@ -14,15 +14,14 @@
     clear: left;
     width: 60vw;
     margin: auto;
-    display: flex;
-    flex-direction: column;
+    /* display: flex;
+    flex-direction: column; */
 }
 
-.scene-container div {
-    margin: auto;
-    width: auto;
+.scene-container input {
+    align-self: center;
 }
 
-.scene-container button {
-    margin: auto;
+.scene-container p {
+    text-align: justify;
 }
