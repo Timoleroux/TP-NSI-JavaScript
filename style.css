@@ -1,28 +1,85 @@
 /* --- General --- */
 
+* {
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 28px;
+}
+
 body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: auto;
+    width: 60vw;
+    background-color: #C291F0;
 }
 
 /* --- Start page --- */
 
 #main-title {
-    font-family: 'Carter One';font-size: 60px;
+    text-align: center;
+    color: white;
+    font-family: 'Carter One';
+    font-size: 60px;
     text-transform: uppercase;
+    width: 600px;
 }
 
 #start-menu {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    width: 800px;
 }
 
 #start-menu button {
-    margin: 10%;
-    padding-right: 10%;
-    padding-left: 10%;
+    margin: 4%;
+    width: 600px;
+    height: 50px;
+
+    color: black;
+    background-color: white;
+    border: none;
+    border-radius: 6px;
+}
+
+#start-menu button:hover {
+    border: 2px solid #ED3662;
+    background-color: #ED3662;
+    color: white;
+    transition: 0.2s;
+    cursor: pointer;
 }
 
 /* --- Character page --- */
+
+#character-container {
+    background-color: blue;
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#character-elements {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#selectors {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#start-btn {
+    align-self: stretch;
+}
+
+#character-profile img {
+    width: 300px;
+    height: 600px;
+    object-fit: cover;
+}
 /* --- Story page --- */
