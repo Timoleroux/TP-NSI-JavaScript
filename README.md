@@ -37,5 +37,7 @@ Les histoires seront stockées dans un fichier json. Le format est le suivant :
 ### Page Web
 Les pages web seront dynamiques, ce qui rend le développement plus modulable et permet une plus grande flexibilité
 
+Lien vers l'artiste qui a fait les visages 3D : https://www.artstation.com/artwork/eaq1vw
+
 ### Avancement
 L'inventaire et l'avancement actuel seront stockés dans les cookies

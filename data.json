@@ -27,14 +27,14 @@
 
     "go_into": {
         "type": "direct",
-        "content": "<span id=\"name\"></span> réussi, non sans difficultés, à passer à travers le passage. Devant lui se trouve un long couloir sombre au bout duquel il peut distinguer quelque chose briller légèrement. Il décide d'aller voir ce que cela pourrait bien être. Il y trouve quelques débris ressemblant étrangement à du tissu mais également une petite lampe torche endommagée ainsi qu'un couteau rouillé. Il essaye de l'allumer, sans succès, mais décide quand même de la garder avec lui. Il retourne vers Sarah.",
+        "content": "NOM réussi, non sans difficultés, à passer à travers le passage. Devant lui se trouve un long couloir sombre au bout duquel il peut distinguer quelque chose briller légèrement. Il décide d'aller voir ce que cela pourrait bien être. Il y trouve quelques débris ressemblant étrangement à du tissu mais également une petite lampe torche endommagée ainsi qu'un couteau rouillé. Il essaye de l'allumer, sans succès, mais décide quand même de la garder avec lui. Il retourne vers Sarah.",
         "redirect": "go_back"
     },
 
     "go_back": {
         "type": "question",
         "content": "Pendant ce temps, Sarah avait réussi à allumer le feu. Ils vont donc pouvoir dormir au chaud cette nuit ! La nuit commence déjà à tomber et vous commencez à préparer des petits lits de fortunes avec des branches et des feuilles. Quelques minutes plus tard, vos lits sont prêts et Sarah commence déjà à s'endormir. Faut-il vous endormir à votre tour ou rester éveiller pour monter la garde ?",
-        "answer_1": ["unknown", "unknown"],
-        "answer_2": ["unknown", "unknown"]
+        "answer_1": ["unknown", "answer 1 unknown"],
+        "answer_2": ["unknown", "answer 2 unknown"]
     }
 }

@@ -40,7 +40,7 @@ function newGame() {
     document.getElementById("character-container").style.display = "flex";
 }
 
-function start() {
+function startNewGame() {
     var name = document.getElementById("character-choice").value;
     var gender = document.querySelector('input[name="gender-choice"]:checked').value;
 
@@ -74,8 +74,17 @@ function loadText(answer) {
         // Hide the choice buttons momentarily
         document.getElementById("choice-container").style.display = "none";
 
-        // Display the name of the player in the top right-hand corner
+        // Display the name and profile picture in the top right-hand corner
         document.getElementById("name").innerHTML = getCookie("name");
+        var source = "ressources/profile_pictures/default.jpg";
+        if (getCookie("gender") == "male") {
+            var i = Math.floor(Math.random() * 5) + 1
+            source = `ressources/profile_pictures/man_${i}.jpg`;
+        } else if (getCookie("gender") == "female") {
+            var i = Math.floor(Math.random() * 15) + 1
+            source = `ressources/profile_pictures/woman_${i}.jpg`;
+        }
+        document.getElementById("profile-picture").src = source;
 
         // Define which text to be shown next
         if (text_name == "start") {
@@ -97,6 +106,13 @@ function loadText(answer) {
 
         // Write the text into '<p id="text"></p>' with a litte animation
         texte = json_content[text_name]["content"];
+
+        if (json_content[text_name]["type"] == "direct") {
+            text_name = json_content[text_name]["redirect"];
+            setCookie("current_text", text_name, 1);
+            texte += json_content[text_name]["content"];
+        }
+
         texte = texte.replace(/NOM/g, getCookie("name")); // Replace all the '[NOM]' by the name chosen by the user
         document.getElementById("text").innerHTML = "";
         var i = 0;
