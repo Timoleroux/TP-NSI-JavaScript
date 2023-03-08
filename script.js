@@ -60,10 +60,27 @@ function startNewGame() {
     setCookie("name", name, 1);
     setCookie("gender", gender, 1);
 
+    var source = "ressources/profile_pictures/default.jpg";
+        if (getCookie("gender") == "male") {
+            var i = Math.floor(Math.random() * 5) + 1
+            source = `ressources/profile_pictures/man_${i}.jpg`;
+        } else if (getCookie("gender") == "female") {
+            var i = Math.floor(Math.random() * 15) + 1
+            source = `ressources/profile_pictures/woman_${i}.jpg`;
+        }
+    setCookie("profile_picture", source, 1)
+    
+
     document.getElementById("character-container").style.display = "none";
     document.getElementById("story").style.display = "block";
 
     loadText();
+}
+
+function resumeGame() {
+    document.getElementById("start-menu").style.display = "none";
+    document.getElementById("story").style.display = "block";
+    loadText()
 }
 
 function loadText(answer) {
@@ -76,15 +93,8 @@ function loadText(answer) {
 
         // Display the name and profile picture in the top right-hand corner
         document.getElementById("name").innerHTML = getCookie("name");
-        var source = "ressources/profile_pictures/default.jpg";
-        if (getCookie("gender") == "male") {
-            var i = Math.floor(Math.random() * 5) + 1
-            source = `ressources/profile_pictures/man_${i}.jpg`;
-        } else if (getCookie("gender") == "female") {
-            var i = Math.floor(Math.random() * 15) + 1
-            source = `ressources/profile_pictures/woman_${i}.jpg`;
-        }
-        document.getElementById("profile-picture").src = source;
+        document.getElementById("profile-picture").src = getCookie("profile_picture");
+        
 
         // Define which text to be shown next
         if (text_name == "start") {
@@ -98,8 +108,6 @@ function loadText(answer) {
                 setCookie("current_text", json_content[text_name]["answer_1"][0], 1);
             } else if (answer == "answer2") {
                 setCookie("current_text", json_content[text_name]["answer_2"][0], 1);
-            } else {
-                return false;
             }
             text_name = getCookie("current_text");
         }
@@ -135,10 +143,6 @@ function loadText(answer) {
             // Replace the text of the choice buttons with the corresponding text
             document.getElementById("choice-1").innerHTML = json_content[text_name]["answer_1"][1];
             document.getElementById("choice-2").innerHTML = json_content[text_name]["answer_2"][1];
-        });
-        // Run 'loadText()' when 'confirm-choice-button-${text_name}' is clicked
-        document.getElementById(`confirm-choice-button-${text_name}`).addEventListener("click", () => {
-            loadText();
         });
     });
 }

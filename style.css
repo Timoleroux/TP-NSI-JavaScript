@@ -32,23 +32,32 @@ body {
     width: 800px;
 }
 
-#start-menu button {
+#start-menu button,
+#start-menu a {
     margin: 4%;
     width: 600px;
     height: 50px;
 
     color: black;
     background-color: white;
-    border: none;
+    border: 2px solid transparent;
     border-radius: 6px;
 }
 
-#start-menu button:hover {
+#start-menu button:hover,
+#start-menu a:hover {
     border: 2px solid #ED3662;
     background-color: #ED3662;
     color: white;
     transition: 0.2s;
     cursor: pointer;
+}
+
+#start-menu a {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* --- Character page --- */
@@ -136,7 +145,7 @@ body {
     width: 100%;
 }
 
-#text {
+#text, p {
     color: white;
     font-family: "ABeeZee";
     text-align: left;
