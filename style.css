@@ -132,10 +132,14 @@ body {
 
 /* --- Story page --- */
 
+#story {
+    width: 100%;
+}
+
 #text {
     color: white;
     font-family: "ABeeZee";
-    text-align: justify;
+    text-align: left;
 }
 
 #choice-container {
@@ -148,7 +152,8 @@ body {
 }
 
 #choice-container button {
-    height: 40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     padding-right: 16px;
     padding-left: 16px;
     margin-left: 4px;
@@ -175,15 +180,7 @@ body {
     align-items: center;
     cursor: pointer;
     color: white;
-    position: absolute;
-    transition: 0.2s;
-}
-
-.change-text:hover {
-    font-size: 44px;
-}
-
-.change-text::after {
+    position: fixed;
     transition: 0.2s;
 }
 
@@ -202,4 +199,28 @@ body {
     margin-right: 10px;
     height: 40px;
     width: auto;
+}
+
+/* --- Profile infos --- */
+
+#profile-infos{
+    display: flex;
+    flex-flow: row;
+    justify-content: right;
+    align-items: center;
+    position: fixed;
+    top: 40px;
+    right: 40px;
+}
+
+#name {
+    color: white;
+    margin-right: 20px;
+}
+
+#profile-infos img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
 }

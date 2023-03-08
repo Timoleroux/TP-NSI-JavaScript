@@ -20,7 +20,7 @@
 
     "intro": {
         "type": "question",
-        "content": "Survivants d'un crash d'avion, Sarah et <span id=\"name\"></span> se retrouvent échoués sur l'île Jeju en Islande. N'ayant aucune idée de l'endroit où ils se trouvaient ni de la façon de s'en sortir, ils ont cherchés un abri et ont trouvés une petite grotte isolés. C'était sombre et humide, mais c'était mieux que rien. Une fois à l'abri, les deux protagonistes commencent à préparer un feu grâce aux branches récupérées plus tôt. Pendant que Sarah s'occupe de l'allumer <span id=\"name\"></span> contemple les murs aux alentours et remarque un passage dans lequel il pourrait aisément se faufiler. Doit-il se laisser tenter par sa curiosité ou retourner avec Sarah ?",
+        "content": "Survivants d'un crash d'avion, Sarah et NOM se retrouvent échoués sur l'île Jeju en Islande. N'ayant aucune idée de l'endroit où ils se trouvaient ni de la façon de s'en sortir, ils ont cherchés un abri et ont trouvés une petite grotte isolés. C'était sombre et humide, mais c'était mieux que rien. Une fois à l'abri, les deux protagonistes commencent à préparer un feu grâce aux branches récupérées plus tôt. Pendant que Sarah s'occupe de l'allumer, NOM contemple les murs aux alentours et remarque un passage dans lequel il pourrait aisément se faufiler. Doit-il se laisser tenter par sa curiosité ou retourner avec Sarah ?",
         "answer_1": ["go_into", "Se faufiler dans le passage."],
         "answer_2": ["go_back", "Retourner aux cotés de Sarah."]
     },

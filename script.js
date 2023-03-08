@@ -1,7 +1,10 @@
-function getJson() {
-    return fetch("data.json")
-        .then((response) => response.json())
-        .catch((error) => console.error("Error:", error));
+async function getJson() {
+    try {
+        const response = await fetch("data.json");
+        return await response.json();
+    } catch (error) {
+        return console.error("Error:", error);
+    }
 }
 
 function setCookie(name, value, days) {
@@ -29,6 +32,14 @@ function deleteCookie(name) {
     document.cookie = name + "=; expires=Thu, 01 Jan 2000 00:00:00 GMT;";
 }
 
+function newGame() {
+    deleteCookie("current_text");
+    deleteCookie("name");
+    deleteCookie("gender");
+    document.getElementById("start-menu").style.display = "none";
+    document.getElementById("character-container").style.display = "flex";
+}
+
 function start() {
     var name = document.getElementById("character-choice").value;
     var gender = document.querySelector('input[name="gender-choice"]:checked').value;
@@ -49,19 +60,24 @@ function start() {
     setCookie("name", name, 1);
     setCookie("gender", gender, 1);
 
-    document.getElementById("start-btn").style.display = "none";
-    document.getElementById("character-choice").disabled = true;
-    document.getElementById("male").disabled = true;
-    document.getElementById("female").disabled = true;
+    document.getElementById("character-container").style.display = "none";
+    document.getElementById("story").style.display = "block";
 
     loadText();
 }
 
-function loadText() {
+function loadText(answer) {
+    // Store the content of data.json inside the variable 'json_content'
     getJson().then((json_content) => {
-        current_html = document.getElementById("story").innerHTML;
         var text_name = getCookie("current_text");
 
+        // Hide the choice buttons momentarily
+        document.getElementById("choice-container").style.display = "none";
+
+        // Display the name of the player in the top right-hand corner
+        document.getElementById("name").innerHTML = getCookie("name");
+
+        // Define which text to be shown next
         if (text_name == "start") {
             setCookie("current_text", "intro", 1);
             text_name = "intro";
@@ -69,9 +85,9 @@ function loadText() {
             alert(`Impossible d'acceder à json_content[${text_name}]`);
             return false;
         } else {
-            if (document.getElementById(`choice-${text_name}-1`).checked) {
+            if (answer == "answer1") {
                 setCookie("current_text", json_content[text_name]["answer_1"][0], 1);
-            } else if (document.getElementById(`choice-${text_name}-2`).checked) {
+            } else if (answer == "answer2") {
                 setCookie("current_text", json_content[text_name]["answer_2"][0], 1);
             } else {
                 return false;
@@ -79,41 +95,31 @@ function loadText() {
             text_name = getCookie("current_text");
         }
 
-        // Get the new html according to the type of data
-        if (json_content[text_name]["type"] == "question") {
-            new_html =
-                current_html + `
-                <div class="scene-container">
-                    <p class="scene">${json_content[text_name]["content"]}</p>
-                    <label>
-                    <input type="radio" name="answer-choice-${text_name}" id="choice-${text_name}-1" value="answer-1"> ${json_content[text_name]["answer_1"][1]}
-                    </label>
-                    <label>
-                    <input type="radio" name="answer-choice-${text_name}" id="choice-${text_name}-2" value="answer-2"> ${json_content[text_name]["answer_2"][1]}
-                    </label>
-                    <button id="confirm-choice-button-${text_name}">Valider</button>
-                </div>`;
-        } else if (json_content[text_name]["type"] == "random"){
-            alert("random")
-        } else if (json_content[text_name]["type"] == "direct"){
-            var redirect_text = json_content[text_name]["redirect"]
-            new_html =
-                current_html + `
-                <div class="scene-container">
-                    <p class="scene">${json_content[text_name]["content"]}</p>
-                    <p class="scene">${json_content[redirect_text]["content"]}</p>
-                    <input type="radio" name="answer-choice-${redirect_text}" id="choice-${redirect_text}-1" value="answer-1"> ${json_content[redirect_text]["answer_1"][1]}
-                    <input type="radio" name="answer-choice-${redirect_text}" id="choice-${redirect_text}-2" value="answer-2"> ${json_content[redirect_text]["answer_2"][1]}
-                    <button id="confirm-choice-button-${redirect_text}">Valider</button>
-                </div>`;
-            text_name = redirect_text
-        } else {
-            alert("unknown")
+        // Write the text into '<p id="text"></p>' with a litte animation
+        texte = json_content[text_name]["content"];
+        texte = texte.replace(/NOM/g, getCookie("name")); // Replace all the '[NOM]' by the name chosen by the user
+        document.getElementById("text").innerHTML = "";
+        var i = 0;
+        function afficherTexte(callback) {
+            if (i < texte.length) {
+                document.getElementById("text").innerHTML += texte.charAt(i);
+                i++;
+                setTimeout(function () {
+                    afficherTexte(callback);
+                }, 30);
+            } else {
+                callback();
+            }
         }
+        // Code inside the function will be executed only when the text will be totally shown
+        afficherTexte(function () {
+            // Display the choice buttons one the text is shown
+            document.getElementById("choice-container").style.display = "flex";
 
-        document.getElementById("story").innerHTML = new_html;
-        document.getElementById("name").innerHTML = getCookie("name");
-
+            // Replace the text of the choice buttons with the corresponding text
+            document.getElementById("choice-1").innerHTML = json_content[text_name]["answer_1"][1];
+            document.getElementById("choice-2").innerHTML = json_content[text_name]["answer_2"][1];
+        });
         // Run 'loadText()' when 'confirm-choice-button-${text_name}' is clicked
         document.getElementById(`confirm-choice-button-${text_name}`).addEventListener("click", () => {
             loadText();
