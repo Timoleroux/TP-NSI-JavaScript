@@ -13,33 +13,45 @@
         <h1 id="main-title">Le titre du livre</h1>
         <div id="start-menu">
             <button>Nouvelle partie</button>
-            <button>Charger une sauvegarde</button>
+            <button>Reprendre la sauvegarde</button>
             <button>Options</button>
             <button>A propos</button>
         </div>
         <!-- <div id="character-container">
             <div id="character-elements">
                 <div id="character-profile">
-                    <img src="image1.png" alt="" />
+                    <img src="image.gif" alt="" />
                 </div>
                 <div id="selectors">
-                    <label for="character-choice">Prénom</label>
+                    <label id="name-label" for="character-choice">Prénom</label>
                     <input type="text" placeholder="Prénom" id="character-choice" />
-                    <label for="gender-choice">Sexe</label>
-                    <label><input type="radio" name="gender-choice" value="male" id="male"/>Homme</label>
-                    <label><input type="radio" name="gender-choice" value="female" id="female"/>Femme</label>
+                    <label id="gender-label" for="gender-choice">Sexe</label>
+                    <label class="label-gender"><input type="radio" name="gender-choice" value="male" id="male"/>Homme</label>
+                    <label class="label-gender"><input type="radio" name="gender-choice" value="female" id="female"/>Femme</label>
                 </div>
             </div>
             <button onclick="start()" id="start-btn">Start</button>
         </div> -->
         <!-- <div id="story">
-            <p id="text"></p>
-            <button>Choix 1</button>
-            <button>Choix 2</button>
-            <button id="previous">Précédent</button>
-            <button id="next">Suivant</button>
+            <p id="text">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore quis eos nesciunt veniam doloremque laborum hic explicabo sint pariatur officiis dolorum, quae aliquam alias iure laboriosam voluptates modi. Sunt, aliquid.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam esse voluptatum optio enim soluta dolor expedita quo harum eveniet necessitatibus. Accusantium, maxime iure! Autem sed quia odit iusto? Quos, inventore.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam esse voluptatum optio enim soluta dolor expedita quo harum eveniet necessitatibus. Accusantium, maxime iure! Autem sed quia odit iusto? Quos, inventore.
+            </p>
+            <div id="choice-container">
+                <button id="choice-1">Premier choix</button>
+                <button id="choice-2">Deuxième choix</button>
+            </div>
+            <button class="change-text" id="previous">
+                <img src="arrow-left.svg">
+                Précédent
+            </button>
+            <button class="change-text" id="next">
+                Suivant
+                <img src="arrow-right.svg">
+            </button>
         </div> -->
-        <script type="text/javascript" src="data.json"></script>
-        <script type="text/javascript" src="script.js"></script>
     </body>
+    <script type="text/javascript" src="data.json"></script>
+    <script type="text/javascript" src="script.js"></script>
 </html>
