@@ -32,12 +32,37 @@ function deleteCookie(name) {
     document.cookie = name + "=; expires=Thu, 01 Jan 2000 00:00:00 GMT;";
 }
 
+function onPageLoad() {
+    var cur_text = getCookie("current_text");
+    var name = getCookie("name");
+    var gender = getCookie("gender");
+    var picture = getCookie("profile_picture")
+    console.log(cur_text)
+    console.log(name)
+    console.log(gender)
+    if (cur_text == null || name == null || gender == null || picture == null) {
+        document.getElementById("resume-game").disabled = true;
+    } else {
+        document.getElementById("resume-game").disabled = false;
+    }
+}
+
 function newGame() {
     deleteCookie("current_text");
     deleteCookie("name");
     deleteCookie("gender");
     document.getElementById("start-menu").style.display = "none";
     document.getElementById("character-container").style.display = "flex";
+    document.getElementById("character-choice").value = "";
+    document.getElementById("male").checked = false
+    document.getElementById("female").checked = false
+}
+
+function goHome() {
+    document.getElementById("start-menu").style.display = "flex";
+    document.getElementById("character-container").style.display = "none";
+    document.getElementById("story").style.display = "none";
+    
 }
 
 function startNewGame() {
@@ -126,6 +151,9 @@ function loadText(answer) {
         var i = 0;
         function afficherTexte(callback) {
             if (i < texte.length) {
+                if (document.getElementById("story").style.display == 'none') {
+                    return 0
+                }
                 document.getElementById("text").innerHTML += texte.charAt(i);
                 i++;
                 setTimeout(function () {
@@ -146,3 +174,5 @@ function loadText(answer) {
         });
     });
 }
+
+window.addEventListener('load', onPageLoad()) 

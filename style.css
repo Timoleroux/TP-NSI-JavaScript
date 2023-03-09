@@ -203,6 +203,11 @@ body {
     bottom: 40px;
 }
 
+#home {
+    left: 40px;
+    top: 40px;
+}
+
 .change-text img {
     margin-left: 10px;
     margin-right: 10px;

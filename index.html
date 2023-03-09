@@ -7,13 +7,14 @@
         <link href='https://fonts.googleapis.com/css?family=Carter One' rel='stylesheet'>
         <link href='https://fonts.googleapis.com/css?family=ABeeZee' rel='stylesheet'>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>[TITRE DU LIVRE]</title>
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <title>LE TITRE DU LIVRE</title>
     </head>
     <body>
         <h1 id="main-title">Le titre du livre</h1>
         <div id="start-menu">
             <button onclick="newGame()">Nouvelle partie</button>
-            <button onclick="resumeGame()">Reprendre la sauvegarde</button>
+            <button id="resume-game" onclick="resumeGame()">Reprendre la sauvegarde</button>
             <button>Options</button>
             <a href="about.html">A propos</a>
         </div>
@@ -30,7 +31,11 @@
                     <label class="label-gender"><input type="radio" name="gender-choice" value="female" id="female"/>Femme</label>
                 </div>
             </div>
-            <button onclick="startNewGame()" id="start-btn">Start</button>
+            <button onclick="startNewGame()" id="start-btn">Démarrer</button>
+            <button class="change-text" id="home" onclick="goHome()">
+                <img src="ressources/arrow-left.svg">
+                Retour
+            </button>
         </div>
         <div id="story">
             <div id="profile-infos">
@@ -49,6 +54,10 @@
             <button class="change-text" id="next">
                 Suivant
                 <img src="ressources/arrow-right.svg">
+            </button>
+            <button class="change-text" id="home" onclick="goHome()">
+                <img src="ressources/arrow-left.svg">
+                Retour
             </button>
         </div>
     </body>
