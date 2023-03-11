@@ -28,19 +28,19 @@ function getCookie(name) {
     return null;
 }
 
-function deleteCookie(name) {
-    document.cookie = name + "=; expires=Thu, 01 Jan 2000 00:00:00 GMT;";
+function deleteCookies(...names) {
+    names.forEach((name) => {
+        document.cookie = name + "=; expires=Thu, 01 Jan 2000 00:00:00 GMT;";
+    });
 }
 
-function onPageLoad() {
-    var cur_text = getCookie("current_text");
-    var name = getCookie("name");
-    var gender = getCookie("gender");
-    var picture = getCookie("profile_picture")
-    console.log(cur_text)
-    console.log(name)
-    console.log(gender)
-    if (cur_text == null || name == null || gender == null || picture == null) {
+function checkForBackup() {
+    if (
+        getCookie("current_text") == null ||
+        getCookie("name") == null ||
+        getCookie("gender") == null ||
+        getCookie("profile_picture") == null
+    ) {
         document.getElementById("resume-game").disabled = true;
     } else {
         document.getElementById("resume-game").disabled = false;
@@ -48,21 +48,19 @@ function onPageLoad() {
 }
 
 function newGame() {
-    deleteCookie("current_text");
-    deleteCookie("name");
-    deleteCookie("gender");
+    deleteCookies("current_text", "name", "gender", "profile_picture");
     document.getElementById("start-menu").style.display = "none";
     document.getElementById("character-container").style.display = "flex";
     document.getElementById("character-choice").value = "";
-    document.getElementById("male").checked = false
-    document.getElementById("female").checked = false
+    document.getElementById("male").checked = false;
+    document.getElementById("female").checked = false;
 }
 
 function goHome() {
+    checkForBackup();
     document.getElementById("start-menu").style.display = "flex";
     document.getElementById("character-container").style.display = "none";
     document.getElementById("story").style.display = "none";
-    
 }
 
 function startNewGame() {
@@ -74,8 +72,6 @@ function startNewGame() {
             var names = ["Jean-Dominique", "Florent", "Sébastien"];
         } else if (gender == "female") {
             var names = ["Marie-Dominique", "Christelle", "Géraldine"];
-        } else {
-            alert("Choississez un genre.");
         }
         name = names[Math.floor(Math.random() * names.length)];
         document.getElementById("character-choice").value = name;
@@ -86,15 +82,14 @@ function startNewGame() {
     setCookie("gender", gender, 1);
 
     var source = "ressources/profile_pictures/default.jpg";
-        if (getCookie("gender") == "male") {
-            var i = Math.floor(Math.random() * 5) + 1
-            source = `ressources/profile_pictures/man_${i}.jpg`;
-        } else if (getCookie("gender") == "female") {
-            var i = Math.floor(Math.random() * 15) + 1
-            source = `ressources/profile_pictures/woman_${i}.jpg`;
-        }
-    setCookie("profile_picture", source, 1)
-    
+    if (getCookie("gender") == "male") {
+        var i = Math.floor(Math.random() * 5) + 1;
+        source = `ressources/profile_pictures/man_${i}.jpg`;
+    } else if (getCookie("gender") == "female") {
+        var i = Math.floor(Math.random() * 15) + 1;
+        source = `ressources/profile_pictures/woman_${i}.jpg`;
+    }
+    setCookie("profile_picture", source, 1);
 
     document.getElementById("character-container").style.display = "none";
     document.getElementById("story").style.display = "block";
@@ -105,7 +100,7 @@ function startNewGame() {
 function resumeGame() {
     document.getElementById("start-menu").style.display = "none";
     document.getElementById("story").style.display = "block";
-    loadText()
+    loadText();
 }
 
 function loadText(answer) {
@@ -119,12 +114,10 @@ function loadText(answer) {
         // Display the name and profile picture in the top right-hand corner
         document.getElementById("name").innerHTML = getCookie("name");
         document.getElementById("profile-picture").src = getCookie("profile_picture");
-        
 
-        // Define which text to be shown next
+        // Define which text will be shown
         if (text_name == "start") {
             setCookie("current_text", "intro", 1);
-            text_name = "intro";
         } else if (json_content[text_name] == undefined) {
             alert(`Impossible d'acceder à json_content[${text_name}]`);
             return false;
@@ -134,10 +127,9 @@ function loadText(answer) {
             } else if (answer == "answer2") {
                 setCookie("current_text", json_content[text_name]["answer_2"][0], 1);
             }
-            text_name = getCookie("current_text");
         }
 
-        // Write the text into '<p id="text"></p>' with a litte animation
+        text_name = getCookie("current_text");
         texte = json_content[text_name]["content"];
 
         if (json_content[text_name]["type"] == "direct") {
@@ -146,28 +138,31 @@ function loadText(answer) {
             texte += json_content[text_name]["content"];
         }
 
-        texte = texte.replace(/NOM/g, getCookie("name")); // Replace all the '[NOM]' by the name chosen by the user
+        // Replace all the 'NOM' by the name chosen by the user
+        texte = texte.replace(/NOM/g, getCookie("name"));
         document.getElementById("text").innerHTML = "";
         var i = 0;
-        function afficherTexte(callback) {
+
+        // Write the text into '<p id="text">...</p>' with a writing animation
+        function displayText(callback) {
             if (i < texte.length) {
-                if (document.getElementById("story").style.display == 'none') {
-                    return 0
+                if (document.getElementById("story").style.display == "none") {
+                    return 0;
+                } else {
+                    document.getElementById("text").innerHTML += texte.charAt(i);
+                    i++;
+                    setTimeout(function () {
+                        displayText(callback);
+                    }, 30);
                 }
-                document.getElementById("text").innerHTML += texte.charAt(i);
-                i++;
-                setTimeout(function () {
-                    afficherTexte(callback);
-                }, 30);
             } else {
                 callback();
             }
         }
-        // Code inside the function will be executed only when the text will be totally shown
-        afficherTexte(function () {
-            // Display the choice buttons one the text is shown
+        // The following code will be executed only when the text will be totally shown
+        displayText(function () {
+            // Display the choice buttons
             document.getElementById("choice-container").style.display = "flex";
-
             // Replace the text of the choice buttons with the corresponding text
             document.getElementById("choice-1").innerHTML = json_content[text_name]["answer_1"][1];
             document.getElementById("choice-2").innerHTML = json_content[text_name]["answer_2"][1];
@@ -175,4 +170,4 @@ function loadText(answer) {
     });
 }
 
-window.addEventListener('load', onPageLoad()) 
+window.addEventListener("load", checkForBackup());

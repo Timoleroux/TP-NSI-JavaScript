@@ -44,13 +44,18 @@ body {
     border-radius: 6px;
 }
 
-#start-menu button:hover,
+#start-menu button:hover:enabled,
 #start-menu a:hover {
     border: 2px solid #ED3662;
     background-color: #ED3662;
     color: white;
     transition: 0.2s;
     cursor: pointer;
+}
+
+#start-menu button:disabled {
+    opacity: 50%;
+    cursor: not-allowed;
 }
 
 #start-menu a {
