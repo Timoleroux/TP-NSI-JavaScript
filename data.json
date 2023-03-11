@@ -21,8 +21,8 @@
     "intro": {
         "type": "question",
         "content": "Survivants d'un crash d'avion, Sarah et NOM se retrouvent échoués sur l'île Jeju en Islande. N'ayant aucune idée de l'endroit où ils se trouvaient ni de la façon de s'en sortir, ils ont cherchés un abri et ont trouvés une petite grotte isolés. C'était sombre et humide, mais c'était mieux que rien. Une fois à l'abri, les deux protagonistes commencent à préparer un feu grâce aux branches récupérées plus tôt. Pendant que Sarah s'occupe de l'allumer, NOM contemple les murs aux alentours et remarque un passage dans lequel il pourrait aisément se faufiler. Doit-il se laisser tenter par sa curiosité ou retourner avec Sarah ?",
-        "answer_1": ["go_into", "Se faufiler dans le passage."],
-        "answer_2": ["go_back", "Retourner aux cotés de Sarah."]
+        "answer_1": ["go_into", "Se faufiler dans le passage"],
+        "answer_2": ["go_back", "Retourner aux cotés de Sarah"]
     },
 
     "go_into": {
@@ -34,7 +34,23 @@
     "go_back": {
         "type": "question",
         "content": "Pendant ce temps, Sarah avait réussi à allumer le feu. Ils vont donc pouvoir dormir au chaud cette nuit ! La nuit commence déjà à tomber et vous commencez à préparer des petits lits de fortunes avec des branches et des feuilles. Quelques minutes plus tard, vos lits sont prêts et Sarah commence déjà à s'endormir. Faut-il vous endormir à votre tour ou rester éveiller pour monter la garde ?",
-        "answer_1": ["unknown", "answer 1 unknown"],
-        "answer_2": ["unknown", "answer 2 unknown"]
+        "answer_1": ["sleep", "S'endormir"],
+        "answer_2": ["stand_guard", "Monter la garde"]
+    },
+    "sleep": {
+        "type": "direct",
+        "content": "Vous vous réveillez le lendemain à l'aube. Vous avez mal dormi et Sarah aussi. Vous avez été de nombreuses fois réveillé par des bruit strident provenant de la forêt. Vous vous réveillez petit à petit lorsque Sarah vous interpelle : il y a des traces de pas à l'entrée de la grotte. En les regardant de plus près vous vous rendez compte que ce sont des empreintes de chaussures militaires : les mêmes que celle que vous utilisiez lorsque vous étiez à l'armée.",
+        "redirect": "first_morning"
+    },
+    "stand_guard": {
+        "type": "direct",
+        "content": "Vous décidez de rester éveillé pour l'instant. Vous êtes nostalgique et vous repensez à votre famille qui vous manque grandement. Le feu commence à s'éteindre. Vous vous levez et allez chercher des branches dans le petit tas que Sarah avait fait. Lorsque vous tournez la tête en direction de la sortie, vous apercevez une silhouette au loin, elle se tient debout et semble vous regarder. En l'espace d'un instant elle disparait dans la forêt. Vous décidez de remettre des branches dans le feu puis de vous couchez. Le lendemain à l'aube, vous être réveillé par Sarah qui a ramené quelques plantes comestibles qu'elle a trouvé. Cela fera l'affaire le temps de trouver de la nourriture plus consistante.",
+        "redirect": "first_morning"
+    },
+    "first_morning": {
+        "type": "question",
+        "content": "Pour votre premier jour de survie sur cette île, la première étape est trouver de la nourriture. Suite aux étranges évènements précédents, vous décidez de changer l'endroit de votre campement. Que vaut-il mieux faire en premier : changer de campement ou chercher de la nourriture ?",
+        "answer_1": ["move_shelter", "Changer de campement"],
+        "answer_2": ["look_for_food", "S'endormir"]
     }
 }
