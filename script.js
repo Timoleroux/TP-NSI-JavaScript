@@ -206,8 +206,8 @@ function saveBackgroundColor(hex) {
     setCookie("bg_color", color, 1);
 }
 
-window.addEventListener("load", checkForBackup());
-
 window.addEventListener("load", () => {
     changeBackgroundColor(getBackgroundColor());
 });
+
+window.addEventListener("load", checkForBackup());

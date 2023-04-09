@@ -11,7 +11,7 @@ body {
     align-items: center;
     margin: auto;
     width: 60vw;
-    background-color: #C291F0;
+    background-color: #c291f0;
 }
 
 /* --- Start page --- */
@@ -19,7 +19,7 @@ body {
 #main-title {
     text-align: center;
     color: white;
-    font-family: 'Carter One';
+    font-family: "Carter One";
     font-size: 60px;
     text-transform: uppercase;
     width: 600px;
@@ -46,8 +46,8 @@ body {
 
 #start-menu button:hover:enabled,
 #start-menu a:hover {
-    border: 2px solid #ED3662;
-    background-color: #ED3662;
+    border: 2px solid #ed3662;
+    background-color: #ed3662;
     color: white;
     transition: 0.2s;
     cursor: pointer;
@@ -150,7 +150,9 @@ body {
     width: 100%;
 }
 
-#text, p, span {
+#text,
+p,
+span {
     color: white;
     font-family: "ABeeZee";
     text-align: left;
@@ -180,10 +182,9 @@ body {
 }
 
 #choice-container button:hover {
-    background-color: #ED3662;
+    background-color: #ed3662;
     color: white;
 }
-
 
 .change-text {
     font-family: "ABeeZee";
@@ -222,7 +223,7 @@ body {
 
 /* --- Profile infos --- */
 
-#profile-infos{
+#profile-infos {
     display: flex;
     flex-flow: row;
     justify-content: right;
@@ -254,12 +255,31 @@ body {
     background-color: transparent;
     border: none;
     cursor: pointer;
-  }
-  #background-color-selector::-webkit-color-swatch {
+}
+#background-color-selector::-webkit-color-swatch {
     border-radius: 5px;
     border: solid 2px white;
-  }
-  #background-color-selector::-moz-color-swatch {
+}
+#background-color-selector::-moz-color-swatch {
     border-radius: 5px;
     border: none;
-  }
+}
+
+#apply-btn {
+    margin: 20px;
+    width: 260px;
+    height: 50px;
+
+    color: black;
+    background-color: white;
+    border: 2px solid transparent;
+    border-radius: 6px;
+}
+
+#apply-btn button:hover {
+    border: 2px solid #ed3662;
+    background-color: #ed3662;
+    color: white;
+    transition: 0.2s;
+    cursor: pointer;
+}

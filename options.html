@@ -20,8 +20,10 @@
         <div id="about-container">
             <input type="color" id="background-color-selector" value="#C291F0">
             <span>Couleur de fond</span>
-            <button onclick="saveBackgroundColor()">Appliquer</button>
-            <script src="script.js"></script>
         </div>
+        <div id="about-container">
+            <button id="apply-btn" onclick="saveBackgroundColor()">Appliquer</button>
+        </div>
+        <script type="text/javascript" src="script.js">changeBackgroundColor(getBackgroundColor())</script>
     </body>
 </html>
