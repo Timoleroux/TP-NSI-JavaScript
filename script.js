@@ -35,10 +35,15 @@ function deleteCookies(...names) {
 }
 
 function checkForBackup() {
+    button = document.getElementById("resume-game");
+    if (!button) {
+        return 0;
+    }
     if (
         getCookie("current_text") == null ||
         getCookie("name") == null ||
         getCookie("gender") == null ||
+        getCookie("history") == null ||
         getCookie("profile_picture") == null
     ) {
         document.getElementById("resume-game").disabled = true;
@@ -61,6 +66,16 @@ function goHome() {
     document.getElementById("start-menu").style.display = "flex";
     document.getElementById("character-container").style.display = "none";
     document.getElementById("story").style.display = "none";
+}
+
+function history(content) {
+    if (content == null) {
+        var hist = [];
+    } else {
+        hist.push(content);
+    }
+    setCookie("history", hist, 1);
+    return hist.length;
 }
 
 function startNewGame() {
@@ -129,9 +144,10 @@ function loadText(answer) {
             }
         }
 
+        // Save the name of the text in the cookies
         text_name = getCookie("current_text");
-        texte = json_content[text_name]["content"];
 
+        texte = json_content[text_name]["content"];
         if (json_content[text_name]["type"] == "direct") {
             text_name = json_content[text_name]["redirect"];
             setCookie("current_text", text_name, 1);
@@ -159,6 +175,7 @@ function loadText(answer) {
                 callback();
             }
         }
+
         // The following code will be executed only when the text will be totally shown
         displayText(function () {
             // Display the choice buttons
@@ -170,4 +187,27 @@ function loadText(answer) {
     });
 }
 
+function changeBackgroundColor(hex) {
+    if (hex == null) {
+        var selectedColor = document.getElementById("background-color-selector").value;
+        document.body.style.backgroundColor = selectedColor;
+    } else {
+        document.body.style.backgroundColor = hex;
+    }
+    return document.body.style.backgroundColor;
+}
+
+function getBackgroundColor() {
+    return getCookie("bg_color");
+}
+
+function saveBackgroundColor(hex) {
+    color = changeBackgroundColor(hex);
+    setCookie("bg_color", color, 1);
+}
+
 window.addEventListener("load", checkForBackup());
+
+window.addEventListener("load", () => {
+    changeBackgroundColor(getBackgroundColor());
+});

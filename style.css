@@ -150,7 +150,7 @@ body {
     width: 100%;
 }
 
-#text, p {
+#text, p, span {
     color: white;
     font-family: "ABeeZee";
     text-align: left;
@@ -243,3 +243,23 @@ body {
     border-radius: 50%;
     object-fit: cover;
 }
+
+/* --- Options --- */
+
+#background-color-selector {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    height: 40px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  #background-color-selector::-webkit-color-swatch {
+    border-radius: 5px;
+    border: solid 2px white;
+  }
+  #background-color-selector::-moz-color-swatch {
+    border-radius: 5px;
+    border: none;
+  }

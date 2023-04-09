@@ -39,5 +39,8 @@ Les pages web seront dynamiques, ce qui rend le développement plus modulable et
 
 Lien vers l'artiste qui a fait les visages 3D : https://www.artstation.com/artwork/eaq1vw
 
+Pour trouver des modèles 3D : https://sketchfab.com/search?features=downloadable&q=adventurer&type=models
+
 ### Avancement
+
 L'inventaire et l'avancement actuel seront stockés dans les cookies
