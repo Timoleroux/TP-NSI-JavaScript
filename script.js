@@ -47,7 +47,6 @@ function checkForBackup() {
         getCookie("current_text") == null ||
         getCookie("name") == null ||
         getCookie("gender") == null ||
-        getCookie("history") == null ||
         getCookie("profile_picture") == null
     ) {
         document.getElementById("resume-game").disabled = true;
@@ -72,25 +71,15 @@ function goHome() {
     document.getElementById("story").style.display = "none";
 }
 
-function history(content) {
-    if (content == null) {
-        let hist = [];
-    } else {
-        hist.push(content);
-    }
-    setCookie("history", hist, 1);
-    return hist.length;
-}
-
 function startNewGame() {
     let name = document.getElementById("character-choice").value;
     let gender = document.querySelector('input[name="gender-choice"]:checked').value;
 
     if (!name) {
         if (gender == "male") {
-            let names = ["Jean-Dominique", "Florent", "Sébastien"];
+            var names = ["Jean-Dominique", "Florent", "Sébastien"];
         } else if (gender == "female") {
-            let names = ["Marie-Dominique", "Christelle", "Géraldine"];
+            var names = ["Marie-Dominique", "Christelle", "Géraldine"];
         }
         name = names[Math.floor(Math.random() * names.length)];
         document.getElementById("character-choice").value = name;

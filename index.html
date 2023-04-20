@@ -8,10 +8,10 @@
         <link href='https://fonts.googleapis.com/css?family=ABeeZee' rel='stylesheet'>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="shortcut icon" href="/ressources/favicon.ico" type="image/x-icon">
-        <title>LE TITRE DU LIVRE</title>
+        <title>Le destin des naufragés</title>
     </head>
     <body>
-        <h1 id="main-title">Le titre du livre</h1>
+        <h1 id="main-title">Le destin des naufragés</h1>
         <div id="start-menu">
             <button onclick="newGame()">Nouvelle partie</button>
             <button id="resume-game" onclick="resumeGame()">Reprendre la sauvegarde</button>
@@ -21,7 +21,7 @@
         <div id="character-container">
             <div id="character-elements">
                 <div id="character-profile">
-                    <img src="ressources/image.gif" alt="" />
+                    <img src="ressources/plane_crash.gif" alt="" />
                 </div>
                 <div id="selectors">
                     <label id="name-label" for="character-choice">Prénom</label>
@@ -47,14 +47,6 @@
                 <button id="choice-1" onclick="loadText('answer1')">Premier choix</button>
                 <button id="choice-2" onclick="loadText('answer2')">Deuxième choix</button>
             </div>
-            <button class="change-text" id="previous">
-                <img src="ressources/arrow-left.svg">
-                Précédent
-            </button>
-            <button class="change-text" id="next">
-                Suivant
-                <img src="ressources/arrow-right.svg">
-            </button>
             <button class="change-text" id="home" onclick="goHome()">
                 <img src="ressources/arrow-left.svg">
                 Retour

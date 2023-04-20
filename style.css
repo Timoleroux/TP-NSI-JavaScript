@@ -22,7 +22,7 @@ body {
     font-family: "Carter One";
     font-size: 60px;
     text-transform: uppercase;
-    width: 600px;
+    width: 800px;
 }
 
 #start-menu {
@@ -96,7 +96,7 @@ body {
 
 #character-profile img {
     width: 440px;
-    height: 600px;
+    height: 300px;
     border-radius: 6px;
     object-fit: cover;
 }
