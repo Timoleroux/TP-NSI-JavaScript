@@ -8,9 +8,9 @@ async function getJson() {
 }
 
 function setCookie(name, value, days) {
-    var expires = "";
+    let expires = "";
     if (days) {
-        var date = new Date();
+        let date = new Date();
         date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
         expires = "; expires=" + date.toUTCString();
     }
@@ -18,12 +18,16 @@ function setCookie(name, value, days) {
 }
 
 function getCookie(name) {
-    var nameEQ = name + "=";
-    var ca = document.cookie.split(";");
-    for (var i = 0; i < ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == " ") c = c.substring(1, c.length);
-        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+    let nameEQ = name + "=";
+    let ca = document.cookie.split(";");
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == " ") {
+            c = c.substring(1, c.length);
+        }
+        if (c.indexOf(nameEQ) == 0) {
+            return c.substring(nameEQ.length, c.length);
+        }
     }
     return null;
 }
@@ -70,7 +74,7 @@ function goHome() {
 
 function history(content) {
     if (content == null) {
-        var hist = [];
+        let hist = [];
     } else {
         hist.push(content);
     }
@@ -79,14 +83,14 @@ function history(content) {
 }
 
 function startNewGame() {
-    var name = document.getElementById("character-choice").value;
-    var gender = document.querySelector('input[name="gender-choice"]:checked').value;
+    let name = document.getElementById("character-choice").value;
+    let gender = document.querySelector('input[name="gender-choice"]:checked').value;
 
     if (!name) {
         if (gender == "male") {
-            var names = ["Jean-Dominique", "Florent", "Sébastien"];
+            let names = ["Jean-Dominique", "Florent", "Sébastien"];
         } else if (gender == "female") {
-            var names = ["Marie-Dominique", "Christelle", "Géraldine"];
+            let names = ["Marie-Dominique", "Christelle", "Géraldine"];
         }
         name = names[Math.floor(Math.random() * names.length)];
         document.getElementById("character-choice").value = name;
@@ -96,12 +100,12 @@ function startNewGame() {
     setCookie("name", name, 1);
     setCookie("gender", gender, 1);
 
-    var source = "ressources/profile_pictures/default.jpg";
+    let source = "ressources/profile_pictures/default.jpg";
     if (getCookie("gender") == "male") {
-        var i = Math.floor(Math.random() * 5) + 1;
+        let i = Math.floor(Math.random() * 5) + 1;
         source = `ressources/profile_pictures/man_${i}.jpg`;
     } else if (getCookie("gender") == "female") {
-        var i = Math.floor(Math.random() * 15) + 1;
+        let i = Math.floor(Math.random() * 15) + 1;
         source = `ressources/profile_pictures/woman_${i}.jpg`;
     }
     setCookie("profile_picture", source, 1);
@@ -121,7 +125,7 @@ function resumeGame() {
 function loadText(answer) {
     // Store the content of data.json inside the variable 'json_content'
     getJson().then((json_content) => {
-        var text_name = getCookie("current_text");
+        let text_name = getCookie("current_text");
 
         // Hide the choice buttons momentarily
         document.getElementById("choice-container").style.display = "none";
@@ -136,12 +140,10 @@ function loadText(answer) {
         } else if (json_content[text_name] == undefined) {
             alert(`Impossible d'acceder à json_content[${text_name}]`);
             return false;
-        } else {
-            if (answer == "answer1") {
-                setCookie("current_text", json_content[text_name]["answer_1"][0], 1);
-            } else if (answer == "answer2") {
-                setCookie("current_text", json_content[text_name]["answer_2"][0], 1);
-            }
+        } else if (answer == "answer1") {
+            setCookie("current_text", json_content[text_name]["answer_1"][0], 1);
+        } else if (answer == "answer2") {
+            setCookie("current_text", json_content[text_name]["answer_2"][0], 1);
         }
 
         // Save the name of the text in the cookies
@@ -157,7 +159,7 @@ function loadText(answer) {
         // Replace all the 'NOM' by the name chosen by the user
         texte = texte.replace(/NOM/g, getCookie("name"));
         document.getElementById("text").innerHTML = "";
-        var i = 0;
+        let i = 0;
 
         // Write the text into '<p id="text">...</p>' with a writing animation
         function displayText(callback) {
@@ -189,7 +191,7 @@ function loadText(answer) {
 
 function changeBackgroundColor(hex) {
     if (hex == null) {
-        var selectedColor = document.getElementById("background-color-selector").value;
+        let selectedColor = document.getElementById("background-color-selector").value;
         document.body.style.backgroundColor = selectedColor;
     } else {
         document.body.style.backgroundColor = hex;
