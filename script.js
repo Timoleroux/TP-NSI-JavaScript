@@ -138,13 +138,20 @@ function loadText(answer) {
         // Save the name of the text in the cookies
         text_name = getCookie("current_text");
 
+        if (json_content[text_name]["type"] == "random") {
+            const proba = json_content[text_name]["answer_1"][2];
+            const random_num = Math.random();
+            const index = (random_num < proba) ? 0 : 1;
+            text_name=json_content[text_name][`answer_${index+1}`][1]
+        }
+
         texte = json_content[text_name]["content"];
+
         if (json_content[text_name]["type"] == "direct") {
             text_name = json_content[text_name]["redirect"];
             setCookie("current_text", text_name, 1);
             texte += json_content[text_name]["content"];
         }
-
         // Replace all the 'NOM' by the name chosen by the user
         texte = texte.replace(/NOM/g, getCookie("name"));
         document.getElementById("text").innerHTML = "";

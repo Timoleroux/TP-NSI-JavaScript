@@ -1,61 +1,152 @@
 {
-    "nom_du_texte_1": {
-        "type": "question",
-        "content": "contenu de nom_du_texte_1",
-        "answer_1": ["nom_texte_1", "texte de la réponse"],
-        "answer_2": ["nom_texte_2", "texte de la réponse"]
-    },
-    "nom_du_texte_2": {
-        "type": "random",
-        "content": "contenu de nom_du_texte_2",
-        "answer_1": ["nom_texte_1", "texte de la réponse", 0.7],
-        "answer_2": ["nom_texte_2", "texte de la réponse", 0.3]
-    },
-    "nom_du_texte_3": {
-        "type": "direct",
-        "content": "contenu de nom_du_texte_3",
-        "redirect": "nom_texte"
-    },
     "intro": {
         "type": "question",
-        "content": "Survivants d'un crash d'avion, Sarah et NOM se retrouvent échoués sur l'île Jeju en Islande. N'ayant aucune idée de l'endroit où ils se trouvaient ni de la façon de s'en sortir, ils ont cherchés un abri et ont trouvés une petite grotte isolés. C'était sombre et humide, mais c'était mieux que rien. Une fois à l'abri, les deux protagonistes commencent à préparer un feu grâce aux branches récupérées plus tôt. Pendant que Sarah s'occupe de l'allumer, NOM contemple les murs aux alentours et remarque un passage dans lequel il pourrait aisément se faufiler. Doit-il se laisser tenter par sa curiosité ou retourner avec Sarah ?",
+        "content": "Après avoir survécu à un crash d'avion, Sarah et NOM, se retrouvent naufragés sur l'île de Jeju en Islande, désorientés quant à leur position et à la manière de s'en sortir. Avec persévérance, ils cherchent un abri et finissent par trouver une petite grotte isolée qui, malgré son aspect sombre et humide, leur offre une certaine protection. Une fois à l'abri, les deux rescapés entreprennent de préparer un feu en utilisant des branches qu'ils ont ramassées auparavant. Tandis que Sarah s'occupe de l'allumer, son compagnon, dont le prénom n'est pas mentionné, contemple attentivement les murs environnants et remarque un passage dans lequel il pourrait aisément se faufiler. Doit-il se laisser tenter par sa curiosité ou retourner après de Sarah ?",
         "answer_1": ["go_into", "Se faufiler dans le passage"],
         "answer_2": ["go_back", "Retourner aux cotés de Sarah"]
     },
     "go_into": {
         "type": "direct",
-        "content": "NOM réussi, non sans difficultés, à passer à travers le passage. Devant lui se trouve un long couloir sombre au bout duquel il peut distinguer quelque chose briller légèrement. Il décide d'aller voir ce que cela pourrait bien être. Il y trouve quelques débris ressemblant étrangement à du tissu mais également une petite lampe torche endommagée ainsi qu'un couteau rouillé. Il essaye de l'allumer, sans succès, mais décide quand même de la garder avec lui. Il retourne vers Sarah.",
+        "content": "Malgré les nombreuses difficultés rencontrées, NOM parvient à se frayer un chemin à travers le passage. Face à lui s'ouvre un long couloir plongé dans l'obscurité, dont l'extrémité semble révéler une faible lueur étincelante. Poussé par sa curiosité, il décide de s'y aventurer pour découvrir l'origine de ce phénomène. Là-bas, il découvre avec étonnement quelques débris, étrangement similaires à du tissu, ainsi qu'une petite lampe torche endommagée et un couteau rouillé. Bien qu'il tente vainement de la rallumer, il décide néanmoins de conserver la lampe torche pour ses futures explorations. Après cette brève escapade, François retourne auprès de Sarah, portant avec lui ses trouvailles ainsi que l'espoir de pouvoir se sortir de cette situation désespérée.",
         "redirect": "go_back"
     },
     "go_back": {
         "type": "question",
-        "content": "Pendant ce temps, Sarah avait réussi à allumer le feu. Ils vont donc pouvoir dormir au chaud cette nuit ! La nuit commence déjà à tomber et vous commencez à préparer des petits lits de fortunes avec des branches et des feuilles. Quelques minutes plus tard, vos lits sont prêts et Sarah commence déjà à s'endormir. Faut-il vous endormir à votre tour ou rester éveiller pour monter la garde ?",
-        "answer_1": ["sleep", "S'endormir"],
+        "content": "Entre-temps, Sarah est parvenue à allumer un feu, offrant ainsi à tous deux un refuge réconfortant pour la nuit à venir. Alors que la nuit commence à tomber doucement, vous vous mettez à l'ouvrage pour préparer des lits rudimentaires, constitués de branches et de feuilles, pour vous permettre de vous reposer au mieux. Après quelques minutes d'efforts, vos lits de fortune sont enfin prêts, et Sarah, déjà accablée par la fatigue, s'endort paisiblement. Faut-il vous endormir à votre tour ou rester éveiller pour monter la garde ?",
+        "answer_1": ["sleep", "S’endormir"],
         "answer_2": ["stand_guard", "Monter la garde"]
     },
     "sleep": {
         "type": "direct",
-        "content": "Vous vous réveillez le lendemain à l'aube. Vous avez mal dormi et Sarah aussi. Vous avez été de nombreuses fois réveillé par des bruit strident provenant de la forêt. Vous vous réveillez petit à petit lorsque Sarah vous interpelle : il y a des traces de pas à l'entrée de la grotte. En les regardant de plus près vous vous rendez compte que ce sont des empreintes de chaussures militaires : les mêmes que celle que vous utilisiez lorsque vous étiez à l'armée.",
+        "content": "Au petit matin, vous vous éveillez avec peine, à bout de forces après une nuit de sommeil agitée. Sarah, elle aussi, semble avoir été tourmentée par le sommeil, tant les bruits stridents provenant de la forêt environnante ont perturbé son repos. Alors que vous vous réveillez lentement, Sarah vous interpelle soudain : elle vient de remarquer des traces de pas à l'entrée de la grotte. En vous penchant pour les observer de plus près, vous réalisez que ce sont des empreintes de chaussures militaires, identiques à celles que vous portiez lorsque vous étiez en service.",
         "redirect": "first_morning"
     },
     "stand_guard": {
         "type": "direct",
-        "content": "Vous décidez de rester éveillé pour l'instant. Vous êtes nostalgique et vous repensez à votre famille qui vous manque grandement. Le feu commence à s'éteindre. Vous vous levez et allez chercher des branches dans le petit tas que Sarah avait fait. Lorsque vous tournez la tête en direction de la sortie, vous apercevez une silhouette au loin, elle se tient debout et semble vous regarder. En l'espace d'un instant elle disparait dans la forêt. Vous décidez de remettre des branches dans le feu puis de vous couchez. Le lendemain à l'aube, vous être réveillé par Sarah qui a ramené quelques plantes comestibles qu'elle a trouvé. Cela fera l'affaire le temps de trouver de la nourriture plus consistante.",
+        "content": "Déterminé à rester éveillé, vous vous adonnez à une profonde réflexion, empli d'une intense nostalgie pour votre famille qui vous manque cruellement. C'est alors que le feu commence à s'affaiblir, vous obligeant à vous lever pour chercher de nouvelles branches dans le petit tas que Sarah avait amassé auparavant. C'est alors que, tournant la tête vers la sortie, vous apercevez une silhouette au loin, se tenant immobile et vous observant avec insistance. L'instant d'après, elle disparaît subitement dans les méandres de la forêt. Déconcerté, vous décidez de rajouter quelques branches dans le feu avant de vous recoucher pour tenter de trouver le sommeil à nouveau. Le lendemain à l’aube, vous être réveillé par Sarah qui a ramené quelques plantes comestibles qu’elle a trouvé. Cela fera l’affaire le temps de trouver de la nourriture plus consistante.",
         "redirect": "first_morning"
     },
     "first_morning": {
         "type": "question",
-        "content": "Pour votre premier jour de survie sur cette île, la première étape est trouver de la nourriture. Suite aux étranges évènements précédents, vous décidez de changer l'endroit de votre campement. Que vaut-il mieux faire en premier : changer de campement ou chercher de la nourriture ?",
+        "content": "Pour leur premier jour de survie sur cette île inhospitalière, la priorité absolue est de trouver de quoi se nourrir. Toutefois, après les événements étranges qui se sont produits précédemment, vous et Sarah décidez de déplacer votre campement vers un nouvel emplacement. Que vaut-il mieux faire en premier : changer de campement ou chercher de la nourriture ?",
         "answer_1": ["move_shelter", "Changer de campement"],
         "answer_2": ["look_for_food", "Chercher de la nourriture"]
     },
+    "look_for_food": {
+        "type": "question",
+        "content": "Comment allez-vous trouver de la nourriture : en pêchant ou en cueillant des fruits ?",
+        "answer_1": ["gather", "Cueillir"],
+        "answer_2": ["fish", "Pêcher"]
+    },
+    "gather": {
+        "type": "random",
+        "content": "N'ayant aucune idée de la manière de trouver des fruits sur cette île inconnue, Sarah propose de chercher autour de la plage, espérant trouver des cocotiers. Avec vos maigres possessions en main, vous vous mettez en route en direction de la plage, en quête de nourriture pour survivre. Comment allez-vous trouver de la nourriture : en cueillant des fruits ou en pêchant ?",
+        "answer_1": ["find_coco", "Cueillir", 0.5],
+        "answer_2": ["fish", "Pêcher", 0.5]
+    },
+    "fish": {
+        "type": "question",
+        "content": "Afin de pouvoir pêcher et se nourrir de poisson frais, vous et Sarah cherchez une solution pour construire une canne à pêche, mais il n'y a aucun fil disponible pour ce faire. Ensemble, vous décidez de trouver un bâton pour le façonner en une sorte de lance, en utilisant le couteau rouillé comme outil. Tandis que vous taillez soigneusement votre lance, Sarah allume un feu pour vous permettre de cuire le poisson une fois la pêche terminée. Une fois votre lance prête, vous vous rendez aux abords de la mer pour attendre patiemment qu'un poisson s'approche suffisamment pour être empalé sur votre arme artisanale. Après une quinzaine de minutes d'attente, un poisson apparaît enfin et vous réussissez à le transpercer d'un seul coup de lance. Avec précaution, vous le récupérez et retournez vers Sarah pour le faire cuire à la perfection. En revenant Sarah vous dit que le poisson n’a pas l’aire d’être commestible mais vous êtes tellement affamé que vous avez du mal à résister. Faut-il manger le poisson ?",
+        "answer_1": ["build_beach", "Au bord de la plage"],
+        "answer_2": ["move_shelter", "Dans la forêt"]
+    },
+    "dont_eat": {
+        "type": "direct",
+        "content": "Vous êtes affamés... Vous savez qu’il faut impérativement trouvez de la nourriture. Peut être trouverez vous quelque chose dans la forêt ?",
+        "redirect": "move_shelter"
+    },
+    "eat": {
+        "type": "redirect",
+        "content": "Malheureusement, la chance n'est pas de votre côté, car à peine quelques minutes après avoir mangé le poisson, vous commencez à ressentir une douleur insupportable à l'estomac, tandis que vos joues commencent à enfler progressivement. Vous êtes pris de vertiges et ressentez une douleur lancinante qui vous plonge dans un état de souffrance intolérable. Malheureusement, il semblerait que votre état soit irréversible et vous vous préparez à vivre vos derniers instants dans des conditions de douleur inimaginables.",
+        "redirect": "game_over"
+    },
+    "shelter_location": {
+        "type": "question",
+        "content": "Après une heure de recherche épuisante, vos efforts pour trouver de quoi vous nourrir se révèlent vains. Face à cette situation désespérée, vous décidez qu'il est temps de songer à la construction d'un abri pour assurer votre survie. Sarah, quant à elle, est perplexe et ne sait pas s'il serait préférable de construire cet abri au bord de la plage ou dans la forêt, ce qui constitue une question cruciale pour votre sécurité à venir. Faut-il le construire au bord de la plage ou dans la forêt ?",
+        "answer_1": ["fish", "Construire l'abri au bord de la plage."],
+        "answer_2": ["dont_eat", "Construire l'abri dans la forêt."]
+    },
     "move_shelter": {
         "type": "direct",
-        "content": "Vous décidez de changer de campement avant de chercher de la nourriture. Vous trouvez un nouvel endroit, un peu plus en hauteur et à l'écart de la forêt. Vous installez un nouveau campement et partez ensuite à la recherche de nourriture.",
-        "redirect": "look_for_food"
+        "content": "Vous vous dirigez donc vers la forêt, après une marche d'environ une demi-heure. Enfin arrivé aux abords de cette dernière, vous commencez à chercher l'emplacement idéal pour construire votre abri de survie. Après une dizaine de minutes de recherche, vous remarquez quelque chose d'inhabituel au loin, qui semble être une sorte de matière métallique. Curieux, vous décidez de vous y diriger, espérant y trouver peut-être une solution pour votre situation précaire. Lorsque vous arrivez finalement à proximité, vous découvrez avec stupéfaction des débris d'avion éparpillés tout autour de vous. Après une rapide analyse, vous identifiez l'appareil comme étant un Cessna 182, souvent utilisé par les particuliers. Vous réalisez alors que cet avion pourrait vous offrir un refuge temporaire pour vous protéger des éléments et des dangers de l'île. En fouillant les débris, vous découvrez des médicaments antidouleur et des piles, qui pourraient s'avérer précieux pour votre survie future.",
+        "redirect": "lights"
     },
-    "look_for_food": {
+    "find_coco": {
+        "type": "question",
+        "content": "Après de longues heures de recherches infructueuses, vous finissez par découvrir un cocotier portant trois noix de coco. Avec l'aide de Sarah, vous réussissez à atteindre la cime de l'arbre pour récupérer ces précieuses denrées, que vous vous empresser de cueillir avec précaution. Cependant, ouvrir ces noix de coco s'avère être une tâche ardue, malgré vos tentatives répétées de les fracasser contre des cailloux. Vous êtes alors confronté à un nouveau défi, celui de trouver un moyen de les ouvrir pour pouvoir enfin vous sustenter. Vous tentez donc d'ouvrir l'une des noix de coco avec le couteau rouillé, mais malheureusement, vous perdez le contrôle de celui-ci et vous infligez une profonde coupure à la cuisse. Sarah, toujours prompte à agir, se met immédiatement à vous prodiguer les premiers soins en confectionnant un garrot à partir des feuilles et des fougères environnantes pour limiter la perte de sang. La douleur est intense et vous avez désormais du mal à marcher. Vous êtes épuisé, affamé et vous n'avez toujours pas trouvé d'endroit où passer la nuit en sécurité. Devant cette situation préoccupante, deux options s'offrent à vous : soit vous construisez votre abri ici, sur le bord de la plage, soit vous envoyez Sarah chercher de la nourriture, pendant que vous restez sur place, dans l'incapacité de bouger.",
+        "answer_1": ["build_shelter", "Construire votre abri ici"],
+        "answer_2": ["dont_move", "Rester ici et envoyer Sarah chercher de la nourriture"]
+    },
+    "build_beach": {
         "type": "direct",
-        "content": "Vous partez à la recherche de nourriture et trouvez des baies, des fruits et quelques champignons comestibles. Vous retournez au campement avec votre butin et préparez un repas pour vous et Sarah. La journée se termine et vous devez maintenant réfléchir à la suite de votre plan de survie sur cette île."
+        "content": "Vous entamez donc la collecte de branches dans les environs, pendant que Sarah se charge de récupérer des fougères qui serviront de liens pour attacher les branches entre elles. Cette organisation minutieuse permet de maximiser l'efficacité de votre travail, tout en limitant le temps et l'énergie dépensés. Au bout d'une heure de dur labeur, vous avez enfin réussi à rassembler suffisamment de matériaux pour la construction de votre abri. C'est avec une certaine fierté que vous contemplez votre œuvre, qui représente un véritable havre de paix et de sécurité pour vous et Sarah sur cette île inhospitalière.",
+        "redirect": "watch_shelter"
+    },
+    "lights": {
+        "type": "question",
+        "content": "A travers les branches, vous appercevez des lumières. Un feu que vous auriez oublié d’éteindre peut être ? Attisés par la curiosité, allez vous rester cacher ou aller voir quelle est la source des cette lumière ?",
+        "answer_1": ["hide", "Se cacher"],
+        "answer_2": ["go", "Aller voir les lumières"]
+    },
+    "build_shelter": {
+        "type": "random",
+        "content": "Vous confiez le couteau rouillé à Sarah, qui part à la recherche de branches pour construire votre abri de fortune. Quinze minutes plus tard, elle revient avec une poignée de branches ainsi que des fougères, qui vous serviront pour lier les différentes parties de votre abri. Que choisissez-vous de faire ?",
+        "answer_1": ["die", "Rester allongé et mourir", 0.4],
+        "answer_2": ["dont_die", "Rester allonger", 0.6]
+    },
+    "dont_move": {
+        "type": "random",
+        "content": "Sarah est partie chercher de la nourriture et vous voilà désormais seul sur cette plage isolée, n'ayant rien à faire à part admirer le ressac des vagues. C'est peut-être le moment idéal pour prendre un peu de repos après cette nuit difficile, vous offrant ainsi une opportunité de vous ressourcer physiquement et mentalement.",
+        "answer_1": ["die", "Rester allongé et mourir", 0.4],
+        "answer_2": ["dont_die", "Rester allonger", 0.6]
+    },
+    "watch_shelter": {
+        "type": "question",
+        "content": "Vous contemplez l'abri que vous avez construit avec Sarah et êtes satisfait du travail accompli. Votre abri est solide, bien protégé des éléments naturels, et devrait vous offrir une bonne nuit de sommeil réparateur. Cependant, le soleil est maintenant couché et il est temps de préparer le feu pour la nuit. Sarah s'occupe de rassembler les branches et les feuilles sèches pour allumer le feu, tandis que vous allez chercher du bois mort aux abord de la plage. Alors que vous revenez avec du bois, vous remarquez quelque chose d'étrange dans l'obscurité de la mer. Vous regardez attentivement et vous apercevez des lumières clignotantes au loin. Intrigué, vous demandez à Sarah si elle voit quelque chose. Elle vous répond qu'elle ne voit rien, mais vous insiste en lui montrant les lumières. Faut-il attirer l’attention des ces « lumières » ou se cacher ?",
+        "answer_1": ["catch_attention", "Attirer leur attention"],
+        "answer_2": ["hide", "Se cacher"]
+    },
+    "die": {
+        "type": "direct",
+        "content": "Alors que vous profitez de cette pause bien méritée, votre état de santé se détériore progressivement. Votre blessure à la cuisse s'infecte et vous vous sentez de plus en plus faible et désorienté. Sarah n'est toujours pas revenue et vous commencez à vous inquiéter de ne pas la voir arriver. Vous essayez de vous lever pour tenter de trouver de l'aide, mais vous vous effondrez sur le sable, votre corps ne répondant plus à vos demandes. La nuit tombe peu à peu et vous vous retrouvez seul, gisant sur cette plage déserte, à l'agonie. Vos pensées se brouillent peu à peu et vous commencez à perdre conscience. Vous savez que c'est la fin, que votre dernier souffle est sur le point de s'échapper de vos lèvres. Vous fermez les yeux une dernière fois, sans savoir si Sarah viendra jamais à votre secours. Votre aventure sur cette île aura donc été de courte durée et s'achève dans la solitude et la tristesse.",
+        "redirect": "game_over"
+    },
+    "hide": {
+        "type": "question",
+        "content": "Sarah finit par les apercevoir également et vous vous rendez compte qu'il s'agit d'un navire qui s'approche dangereusement de l'île. Vous décidez de vous éloigner de la plage pour vous cacher dans la forêt, de peur que le navire ne soit pas là pour vous aider. Vous vous frayer un chemin dans la forêt à la lueur du feu que vous avez allumé et vous vous cachez derrière un bosquet d'arbres. Vous restez silencieux et attentifs, essayant de deviner les intentions du navire. Au bout d'un moment, vous entendez des voix et des bruits de pas qui se rapprochent de votre cachette. Vous vous tenez prêts à vous défendre, au cas où. Heureusement, les bruits se dissipent petit à petit et vous réalisez que le navire est passé sans même remarquer votre présence. Devez vous retourner à votre campement ou rester cacher ici ?",
+        "answer_1": ["bo_back_to_shelter", "Retourner au campement"],
+        "answer_2": ["stay_hide", "Rester caché"]
+    },
+    "dont_die": {
+        "type": "question",
+        "content": "Après quelques minutes de contemplation, vous décidez de vous allonger sur le sable doux et chaud pour vous reposer un peu. Vous fermez les yeux et vous laissez bercer par le bruit des vagues. Le soleil caresse votre visage et vous vous sentez peu à peu enveloppé par une agréable sensation de bien-être. Vous somnolez tranquillement pendant quelques heures, bercé par le rythme régulier des vagues. Lorsque vous rouvrez les yeux, vous constatez que Sarah est revenue. Elle a ramené quelques fruits tropicaux, dont des mangues juteuses et sucrées, ainsi que des noix de coco supplémentaires pour vous rafraîchir. Grâce à cette petite sieste réparatrice, vous vous sentez désormais reposé et prêt à poursuivre votre aventure sur cette île mystérieuse. Il est temps maintenant de trouver un lieu sûr pour passer la nuit et de continuer votre exploration en quête de ressources pour votre survie. Vous vous concertez pour savoir où construire votre abri. Sera-t-il au bord de la plage ou dans la forêt ?",
+        "answer_1": ["build_beach", "Au bord de la plage"],
+        "answer_2": ["forest", "Dans la forêt"]
+    },
+    "catch_attention": {
+        "type": "random",
+        "content": "Vous décidez d'allumer une torche pour mieux voir, et vous constatez avec stupeur qu'il s'agit d'un bateau, qui se rapproche de plus en plus de la plage. Vous vous mettez à agiter votre torche pour attirer l'attention du bateau, et vous entendez des cris et des appels venant du navire. Ils vous ont vus ! Vous criez pour attirer l'attention des marins à bord du navire. Le bateau se rapproche de plus en plus, et vous pouvez maintenant voir les visages des marins qui vous font signe de venir les rejoindre. Vous êtes à la fois soulagé et méfiant. Que fait ce navire ici ? Que veulent-ils ? Vous décidez d'être prudent et de rester sur vos gardes.",
+        "answer_1": ["nice_boat", "Ils sont sympa", 0.5],
+        "answer_2": ["bad_boat", "Ils sont pas sympa", 0.5]
+    },
+    "nice_boat": {
+        "type": "direct",
+        "content": "Finalement, le bateau s'approche suffisamment de la plage pour que vous puissiez entendre les marins qui vous appellent. Ils vous expliquent qu'ils ont reçu un signal de détresse provenant de votre avion écrasé, et qu'ils sont venus vous secourir. Vous êtes abasourdi. Vous aviez presque abandonné tout espoir d'être secouru, et voilà que des sauveteurs arrivent à point nommé !\nLes marins vous aident à charger vos affaires à bord du bateau, et vous leur racontez votre histoire. Vous êtes en sécurité à présent, et vous pouvez retourner chez vous auprès de vos familles et de vos proches. C'est un nouveau départ pour vous, une occasion de repartir à zéro et de tout reconstruire.",
+        "redirect": "end"
+    },
+    "bad_boat": {
+        "type": "direct",
+        "content": "Alors que vous continuez de contempler le bateau qui s'approche de l'île, vous êtes rempli d'espoir. Vous pensez que ces marins sont là pour vous sauver et vous ne pouvez vous empêcher de vous précipiter pour attirer leur attention. Après quelques minutes à agiter les bras, les marins finissent par vous remarquer et dirigent leur bateau vers la plage. Vous êtes soulagé, pensant que le cauchemar est enfin terminé. Cependant, lorsque le bateau accoste, l’équipage descendent armés jusqu'aux dents et vous réalisez trop tard qu'ils ne sont pas là pour vous sauver, mais pour vous kidnapper. Vous tentez de fuir, mais les marins sont trop nombreux et vous êtes rapidement maîtrisé. Ils vous emmènent à bord de leur navire, où vous vous retrouvez enfermés dans une petite cabine, avec Sarah à vos côtés. Après plusieurs minutes, les pirates vous amènent sur le pont où se trouve un feu. Ils vous révèlent alors qu’ils n’ont plus rien à manger depuis de nombreux jours. Vous vous préparez au pire. Un pirate sort un sabre et vous met côtes à côtes avec Sarah. Avant de le savoir, votre tête quitte votre corps et vous finissez tailladés en grillades.",
+        "redirect": "game_over"
+    },
+    "bo_back_to_shelter": {
+        "type": "direct",
+        "content": "Vous retournez à votre campement et tombez nez-à-nez avec les marins. Ces derniers vous demandent depuis combien de temps vous êtes sur cette île. Après leur avoir raconté votre histoire, ils vous informent qu’ils ont été intrigués par un sos envoyé depuis votre avion. Ils sont là pour vous sauver ! Vous montez donc à bord de leur bateau et bientôt vous retrouvez votre famille.",
+        "redirect": "game_over"
+    },
+    "stay_hide": {
+        "type": "direct",
+        "content": "Vous vous concertez et décidez de rester à l’abri dans les arbres. Après un moment, vous sentez quelque chose se frotter à votre jambe dans les hautes herbes. C’est un serpent ! Vous essayez de fuir, mais trop tard, il vous a mordu. Une grande douleur vous envahit et vous vous évanouissez, pour ne pas vous réveiller.",
+        "redirect": "game_over"
     }
 }
