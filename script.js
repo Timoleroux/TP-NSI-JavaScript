@@ -141,8 +141,8 @@ function loadText(answer) {
         if (json_content[text_name]["type"] == "random") {
             const proba = json_content[text_name]["answer_1"][2];
             const random_num = Math.random();
-            const index = (random_num < proba) ? 0 : 1;
-            text_name=json_content[text_name][`answer_${index+1}`][0]
+            const index = random_num < proba ? 0 : 1;
+            text_name = json_content[text_name][`answer_${index + 1}`][0];
         }
 
         texte = json_content[text_name]["content"];
@@ -177,11 +177,18 @@ function loadText(answer) {
         // The following code will be executed only when the text will be totally shown
         displayText(function () {
             // Display the choice buttons
-            document.getElementById("choice-container").style.display = "flex";
+            if (json_conten[text_name]["redirect"] != "end") {
+                document.getElementById("choice-container").style.display = "flex";
+            }
             // Replace the text of the choice buttons with the corresponding text
             document.getElementById("choice-1").innerHTML = json_content[text_name]["answer_1"][1];
             document.getElementById("choice-2").innerHTML = json_content[text_name]["answer_2"][1];
         });
+
+        if (text_name == "end") {
+            deleteCookies("current_text", "name", "gender", "profile_picture");
+            return 0;
+        }
     });
 }
 
@@ -196,6 +203,9 @@ function changeBackgroundColor(hex) {
 }
 
 function getBackgroundColor() {
+    if (getCookie("bg_color") == null) {
+        return "#c291f0";
+    }
     return getCookie("bg_color");
 }
 

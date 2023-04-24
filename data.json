@@ -47,8 +47,8 @@
     "fish": {
         "type": "question",
         "content": "Afin de pouvoir pêcher et se nourrir de poisson frais, vous et Sarah cherchez une solution pour construire une canne à pêche, mais il n'y a aucun fil disponible pour ce faire. Ensemble, vous décidez de trouver un bâton pour le façonner en une sorte de lance, en utilisant le couteau rouillé comme outil. Tandis que vous taillez soigneusement votre lance, Sarah allume un feu pour vous permettre de cuire le poisson une fois la pêche terminée. Une fois votre lance prête, vous vous rendez aux abords de la mer pour attendre patiemment qu'un poisson s'approche suffisamment pour être empalé sur votre arme artisanale. Après une quinzaine de minutes d'attente, un poisson apparaît enfin et vous réussissez à le transpercer d'un seul coup de lance. Avec précaution, vous le récupérez et retournez vers Sarah pour le faire cuire à la perfection. En revenant Sarah vous dit que le poisson n’a pas l’aire d’être commestible mais vous êtes tellement affamé que vous avez du mal à résister. Faut-il manger le poisson ?",
-        "answer_1": ["build_beach", "Au bord de la plage"],
-        "answer_2": ["move_shelter", "Dans la forêt"]
+        "answer_1": ["eat", "Manger le poisson"],
+        "answer_2": ["dont_eat", "Ne pas manger le poisson"]
     },
     "dont_eat": {
         "type": "direct",
@@ -58,7 +58,7 @@
     "eat": {
         "type": "redirect",
         "content": "Malheureusement, la chance n'est pas de votre côté, car à peine quelques minutes après avoir mangé le poisson, vous commencez à ressentir une douleur insupportable à l'estomac, tandis que vos joues commencent à enfler progressivement. Vous êtes pris de vertiges et ressentez une douleur lancinante qui vous plonge dans un état de souffrance intolérable. Malheureusement, il semblerait que votre état soit irréversible et vous vous préparez à vivre vos derniers instants dans des conditions de douleur inimaginables.",
-        "redirect": "game_over"
+        "redirect": "end"
     },
     "shelter_location": {
         "type": "question",
@@ -109,7 +109,7 @@
     "die": {
         "type": "direct",
         "content": "Alors que vous profitez de cette pause bien méritée, votre état de santé se détériore progressivement. Votre blessure à la cuisse s'infecte et vous vous sentez de plus en plus faible et désorienté. Sarah n'est toujours pas revenue et vous commencez à vous inquiéter de ne pas la voir arriver. Vous essayez de vous lever pour tenter de trouver de l'aide, mais vous vous effondrez sur le sable, votre corps ne répondant plus à vos demandes. La nuit tombe peu à peu et vous vous retrouvez seul, gisant sur cette plage déserte, à l'agonie. Vos pensées se brouillent peu à peu et vous commencez à perdre conscience. Vous savez que c'est la fin, que votre dernier souffle est sur le point de s'échapper de vos lèvres. Vous fermez les yeux une dernière fois, sans savoir si Sarah viendra jamais à votre secours. Votre aventure sur cette île aura donc été de courte durée et s'achève dans la solitude et la tristesse.",
-        "redirect": "game_over"
+        "redirect": "end"
     },
     "hide": {
         "type": "question",
@@ -137,21 +137,22 @@
     "bad_boat": {
         "type": "direct",
         "content": "Alors que vous continuez de contempler le bateau qui s'approche de l'île, vous êtes rempli d'espoir. Vous pensez que ces marins sont là pour vous sauver et vous ne pouvez vous empêcher de vous précipiter pour attirer leur attention. Après quelques minutes à agiter les bras, les marins finissent par vous remarquer et dirigent leur bateau vers la plage. Vous êtes soulagé, pensant que le cauchemar est enfin terminé. Cependant, lorsque le bateau accoste, l’équipage descendent armés jusqu'aux dents et vous réalisez trop tard qu'ils ne sont pas là pour vous sauver, mais pour vous kidnapper. Vous tentez de fuir, mais les marins sont trop nombreux et vous êtes rapidement maîtrisé. Ils vous emmènent à bord de leur navire, où vous vous retrouvez enfermés dans une petite cabine, avec Sarah à vos côtés. Après plusieurs minutes, les pirates vous amènent sur le pont où se trouve un feu. Ils vous révèlent alors qu’ils n’ont plus rien à manger depuis de nombreux jours. Vous vous préparez au pire. Un pirate sort un sabre et vous met côtes à côtes avec Sarah. Avant de le savoir, votre tête quitte votre corps et vous finissez tailladés en grillades.",
-        "redirect": "game_over"
+        "redirect": "end"
     },
     "bo_back_to_shelter": {
         "type": "direct",
         "content": "Vous retournez à votre campement et tombez nez-à-nez avec les marins. Ces derniers vous demandent depuis combien de temps vous êtes sur cette île. Après leur avoir raconté votre histoire, ils vous informent qu’ils ont été intrigués par un sos envoyé depuis votre avion. Ils sont là pour vous sauver ! Vous montez donc à bord de leur bateau et bientôt vous retrouvez votre famille.",
-        "redirect": "game_over"
+        "redirect": "end"
     },
     "stay_hide": {
         "type": "direct",
         "content": "Vous vous concertez et décidez de rester à l’abri dans les arbres. Après un moment, vous sentez quelque chose se frotter à votre jambe dans les hautes herbes. C’est un serpent ! Vous essayez de fuir, mais trop tard, il vous a mordu. Une grande douleur vous envahit et vous vous évanouissez, pour ne pas vous réveiller.",
-        "redirect": "game_over"
+        "redirect": "end"
     },
-    "game_over": {
-        "type": "direct",
-        "content": "FIN",
-        "redirect": "game_over"
+    "end": {
+        "type": "question",
+        "content": "",
+        "answer_1": ["end", ""],
+        "answer_2": ["end", ""]
     }
 }
