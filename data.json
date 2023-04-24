@@ -1,13 +1,13 @@
 {
     "intro": {
         "type": "question",
-        "content": "Après avoir survécu à un crash d'avion, Sarah et NOM, se retrouvent naufragés sur l'île de Jeju en Islande, désorientés quant à leur position et à la manière de s'en sortir. Avec persévérance, ils cherchent un abri et finissent par trouver une petite grotte isolée qui, malgré son aspect sombre et humide, leur offre une certaine protection. Une fois à l'abri, les deux rescapés entreprennent de préparer un feu en utilisant des branches qu'ils ont ramassées auparavant. Tandis que Sarah s'occupe de l'allumer, son compagnon, dont le prénom n'est pas mentionné, contemple attentivement les murs environnants et remarque un passage dans lequel il pourrait aisément se faufiler. Doit-il se laisser tenter par sa curiosité ou retourner après de Sarah ?",
+        "content": "Après avoir survécu à un crash d'avion, Sarah et NOM, se retrouvent naufragés sur l'île de Jeju en Islande, désorientés quant à leur position et à la manière de s'en sortir. Avec persévérance, ils cherchent un abri et finissent par trouver une petite grotte isolée qui, malgré son aspect sombre et humide, leur offre une certaine protection. Une fois à l'abri, les deux rescapés entreprennent de préparer un feu en utilisant des branches qu'ils ont ramassées auparavant. Tandis que Sarah s'occupe de l'allumer, NOM, contemple attentivement les murs environnants et remarque un passage dans lequel il pourrait aisément se faufiler. Doit-il se laisser tenter par sa curiosité ou retourner après de Sarah ?",
         "answer_1": ["go_into", "Se faufiler dans le passage"],
         "answer_2": ["go_back", "Retourner aux cotés de Sarah"]
     },
     "go_into": {
         "type": "direct",
-        "content": "Malgré les nombreuses difficultés rencontrées, NOM parvient à se frayer un chemin à travers le passage. Face à lui s'ouvre un long couloir plongé dans l'obscurité, dont l'extrémité semble révéler une faible lueur étincelante. Poussé par sa curiosité, il décide de s'y aventurer pour découvrir l'origine de ce phénomène. Là-bas, il découvre avec étonnement quelques débris, étrangement similaires à du tissu, ainsi qu'une petite lampe torche endommagée et un couteau rouillé. Bien qu'il tente vainement de la rallumer, il décide néanmoins de conserver la lampe torche pour ses futures explorations. Après cette brève escapade, François retourne auprès de Sarah, portant avec lui ses trouvailles ainsi que l'espoir de pouvoir se sortir de cette situation désespérée.",
+        "content": "Malgré les nombreuses difficultés rencontrées, NOM parvient à se frayer un chemin à travers le passage. Face à lui s'ouvre un long couloir plongé dans l'obscurité, dont l'extrémité semble révéler une faible lueur étincelante. Poussé par sa curiosité, il décide de s'y aventurer pour découvrir l'origine de ce phénomène. Là-bas, il découvre avec étonnement quelques débris, étrangement similaires à du tissu, ainsi qu'une petite lampe torche endommagée et un couteau rouillé. Bien qu'il tente vainement de la rallumer, il décide néanmoins de conserver la lampe torche pour ses futures explorations. Après cette brève escapade, NOM retourne auprès de Sarah, portant avec lui ses trouvailles ainsi que l'espoir de pouvoir se sortir de cette situation désespérée.",
         "redirect": "go_back"
     },
     "go_back": {
@@ -40,7 +40,7 @@
     },
     "gather": {
         "type": "random",
-        "content": "N'ayant aucune idée de la manière de trouver des fruits sur cette île inconnue, Sarah propose de chercher autour de la plage, espérant trouver des cocotiers. Avec vos maigres possessions en main, vous vous mettez en route en direction de la plage, en quête de nourriture pour survivre. Comment allez-vous trouver de la nourriture : en cueillant des fruits ou en pêchant ?",
+        "content": "N'ayant aucune idée de la manière de trouver des fruits sur cette île inconnue, Sarah propose de chercher autour de la plage, espérant trouver des cocotiers. Avec vos maigres possessions en main, vous vous mettez en route en direction de la plage, en quête de nourriture pour survivre.",
         "answer_1": ["find_coco", "Cueillir", 0.5],
         "answer_2": ["fish", "Pêcher", 0.5]
     },
@@ -86,7 +86,7 @@
         "type": "question",
         "content": "A travers les branches, vous appercevez des lumières. Un feu que vous auriez oublié d’éteindre peut être ? Attisés par la curiosité, allez vous rester cacher ou aller voir quelle est la source des cette lumière ?",
         "answer_1": ["hide", "Se cacher"],
-        "answer_2": ["go", "Aller voir les lumières"]
+        "answer_2": ["catch_attention", "Aller voir les lumières"]
     },
     "build_shelter": {
         "type": "random",
@@ -147,6 +147,11 @@
     "stay_hide": {
         "type": "direct",
         "content": "Vous vous concertez et décidez de rester à l’abri dans les arbres. Après un moment, vous sentez quelque chose se frotter à votre jambe dans les hautes herbes. C’est un serpent ! Vous essayez de fuir, mais trop tard, il vous a mordu. Une grande douleur vous envahit et vous vous évanouissez, pour ne pas vous réveiller.",
+        "redirect": "game_over"
+    },
+    "game_over": {
+        "type": "direct",
+        "content": "FIN",
         "redirect": "game_over"
     }
 }

@@ -142,7 +142,7 @@ function loadText(answer) {
             const proba = json_content[text_name]["answer_1"][2];
             const random_num = Math.random();
             const index = (random_num < proba) ? 0 : 1;
-            text_name=json_content[text_name][`answer_${index+1}`][1]
+            text_name=json_content[text_name][`answer_${index+1}`][0]
         }
 
         texte = json_content[text_name]["content"];
